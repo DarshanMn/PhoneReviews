@@ -1,0 +1,139 @@
+{{a=request.vars['manufacturer']}}
+{{b=request.vars['phone']}}
+{{user=request.vars['user']}}
+
+
+{{rows = db(db.phone_id.name==b).select(db.phone_id.id)}}
+{{if len(rows):}}
+{{for r in rows:}}
+{{id=r.id}}
+{{pass}}
+{{else:}}
+{{id=0}}
+{{pass}}
+
+{{rows = db(db.phone_images.phone_id==id).select(db.phone_images.images)}}
+{{if len(rows):}}
+{{for r in rows:}}
+{{src=r.images}}
+{{break}}
+{{else:}}
+{{src=""}}
+{{pass}}
+
+{{extend 'layout.html'}}
+{{block page}}
+
+  <script type="text/javascript">
+    function fun()
+    {
+      var arra = new Array();
+      {{rows = db(db.phone_images.phone_id==id).select(db.phone_images.images)}}
+      {{if len(rows):}}
+      {{for r in rows:}}
+        var str="{{=r.images}}";
+        arra.push(str);
+      {{pass}}
+      var id;
+      var c=document.getElementsByClassName ("change");
+      for (var i = 0; i < c.length; ++i) {
+        var item = c[i];  
+        id = item.id;
+        item.id=String((Number(id)%(arra.length-1) + 1));
+        item.src=arra[Number(item.id)];
+      }
+      {{pass}}
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+    	{{request_uri = URL(args=request.args, vars=request.vars, host=True)}}
+    	var url = "{{=request_uri}}";
+    	if (url.match("bad_reviews")){
+    		var c=document.getElementById("sub2");
+    		c.className="item active";    			
+    	}
+    	else if(url.match("good_reviews")) {
+    		var c=document.getElementById("sub1");
+    		c.className="item active";
+    	}
+    	else if(url.match("features")){
+    		var c=document.getElementById("sub3");
+    		c.className="item active";
+    	}
+    	else{
+    		var c=document.getElementById("sub0");
+    		c.className="item active";
+    	}
+   	// your code here
+	}, false);
+  </script>
+
+<div class="navigator" style="padding-left:0.5cm;">
+	<p style="color: blue;">
+		{{if user is None:}}
+		<a href="{{=URL('index')}}">Home</a>
+	 	<a>>></a>
+		<a href="{{=URL('products', vars=dict(manufacturer=a))}}">{{=a}}</a>
+	 	<a>>></a>
+	 	{{else:}}	
+		<a href="{{=URL('index', vars=dict(user=request.vars['user']))}}">Home</a>
+	 	<a>>></a>
+		<a href="{{=URL('products', vars=dict(manufacturer=a, user=request.vars['user']))}}">{{=a}}</a>
+	 	<a>>></a>
+	 	{{pass}}
+		<a href="#">{{=b.strip(',')}}</a>
+	</p>
+</div>
+
+<div class="row">
+	<div class="span6">
+		<br/>
+		<img class="change" id="0" height="10" src="{{=URL('static','images/'+b.replace(" ","_")+'.jpg')}}">
+	</div>
+	<div class="span6">
+		<center>
+		<h2 style="vertical-align:middle;">{{=b.strip(',')}}</h2>
+		</center>
+		
+	</div>
+</div>
+
+<div class="tabbable">
+	<br/>
+
+	<ul class="nav nav-tabs-m" >
+		{{if user is None:}}
+		<li class="item" id="sub0" onclick=changeToActive(this)>
+			<a id="viTabs_0" style="border-top:1px solid #DDDDDD;" href="{{=URL('specifications', vars=dict(manufacturer=a, phone=b))}}">Specifications</a>
+		</li>
+		<li class="item" id="sub1" onclick=changeToActive(this)>
+			<a id="viTabs_1" style="border-top:1px solid #DDDDDD;" href="{{=URL('good_reviews', vars=dict(manufacturer=a, phone=b))}}">Good Reviews</a>
+		</li>
+		<li class="item" id="sub2" onclick=changeToActive(this)>
+			<a id="viTabs_2" style="border-top:1px solid #DDDDDD;" href="{{=URL('bad_reviews', vars=dict(manufacturer=a, phone=b))}}">Bad Reviews</a>
+		</li>
+		<li class="item" id="sub3" onclick=changeToActive(this)>
+			<a id="viTabs_3" style="border-top:1px solid #DDDDDD;" href="{{=URL('features', vars=dict(manufacturer=a, phone=b))}}">Features</a>
+		</li>
+		{{else:}}
+		<li class="item" id="sub0" onclick=changeToActive(this)>
+			<a id="viTabs_0" style="border-top:1px solid #DDDDDD;" href="{{=URL('specifications', vars=dict(manufacturer=a, user=request.vars['user'], phone=b))}}">Specifications</a>
+		</li>
+		<li class="item" id="sub1" onclick=changeToActive(this)>
+			<a id="viTabs_1" style="border-top:1px solid #DDDDDD;" href="{{=URL('good_reviews', vars=dict(manufacturer=a, user=request.vars['user'], phone=b))}}">Good Reviews</a>
+		</li>
+		<li class="item" id="sub2" onclick=changeToActive(this)>
+			<a id="viTabs_2" style="border-top:1px solid #DDDDDD;" href="{{=URL('bad_reviews', vars=dict(manufacturer=a, user=request.vars['user'], phone=b))}}">Bad Reviews</a>
+		</li>
+		<li class="item" id="sub3" onclick=changeToActive(this)>
+			<a id="viTabs_3" style="border-top:1px solid #DDDDDD;" href="{{=URL('features', vars=dict(manufacturer=a, user=request.vars['user'], phone=b))}}">Features</a>
+		</li>
+		{{pass}}
+	</ul>
+	<br/>
+	<div class="tab-content-m">
+	{{include}}
+	</div>
+</div>
+
+{{end}}

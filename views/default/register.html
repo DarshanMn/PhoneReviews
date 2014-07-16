@@ -1,0 +1,24 @@
+{{extend 'layout.html'}}
+{{block page}}
+		<div id="container">
+			<div id="header">
+				<center>
+					<a href="#">Welcome. Please register to access your services.</a>
+				</center>
+			</div>
+			<div id="menu">
+			</div>
+			<div id="sidebar">
+				<h2>Web Form</h2>
+			</div>
+			<div id="main">
+				<p style="font-size:25px;">Please enter your first name, last name, and email address - thanks!</p>
+				<p style="font-size:25px;">Please note: All attempts must be error free before any info is accepted.</p>
+				<h2 style="font-size:25px;"><strong>Inputs:</strong></h2>
+				<br/>
+				<div style="padding-left:55px">
+					{{=form}}
+				</div>
+			</div>
+		</div>
+{{end}}

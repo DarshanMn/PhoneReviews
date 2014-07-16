@@ -1,0 +1,28 @@
+{{extend 'phone.html'}}
+{{phone= request.vars['phone']}}
+
+{{rows = db(db.phone_id.name==phone).select(db.phone_id.id)}}
+{{for r in rows:}}
+{{id=r.id}}
+{{pass}}
+
+<textarea id="text"></textarea>
+
+
+
+<h2 style="padding-left:0.4cm">Bad Customer Reviews</h2>
+{{ rows = db((db.reviews.types==0)&(db.reviews.phone_id==id)).select() }}
+{{if len(rows):}}
+	<ol style="padding-left:0.4cm; padding-top:0.5cm">
+	{{ for r in rows: }}
+		{{abc = r.review}}
+		{{abc = abc.strip(' ')}}
+		<div id="list2" class="row" style="padding-bottom:0.3cm; padding-right:0.5cm"> 
+			<li style="padding-left:0.3cm">
+				<p style="color:grey;">By <span style="color:blue;">{{=r.user_name}}</span> on {{=r.dates}}</p>
+				<p>{{=abc}}</p>
+			</li>
+		</div>
+	{{pass}}
+	</ol>
+{{pass}}

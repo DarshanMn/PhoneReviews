@@ -1,0 +1,177 @@
+{{extend 'phone.html'}}
+
+{{phone= request.vars['phone']}}
+
+{{rows = db(db.phone_id.name==phone).select(db.phone_id.id)}}
+{{for r in rows:}}
+{{id=r.id}}
+{{pass}}
+{{rows = db(db.specifications.phone_id==id).select()}}
+
+	{{for r in rows: }}
+	<div class="s_specs_box">
+		<h4 class="htitle">Design</h4>
+		<br/>
+		<ul>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Device type:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.DeviceType}}</li>
+				</ul>
+			</li>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>OS:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.OS}}</li>
+				</ul>
+			</li>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Dimensions:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.Dimensions}}</li>
+				</ul>
+			</li><li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Weight:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.Weight}}</li>
+				</ul>
+			</li>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Body Material:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.BodyMaterial}}</li>
+				</ul>
+			</li>
+		</ul>
+		<br/>
+
+		<h4 class="htitle">Physical Size:</h4>
+		<br/>
+		<ul>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Physical Size:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.PhysicalSize}}</li>
+				</ul>
+			</li><li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Resolution:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.Resolution}}</li>
+				</ul>
+			</li>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Colors:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.Colors}}</li>
+				</ul>
+			</li>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Features:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.Features}}</li>
+				</ul>
+			</li>
+		</ul>
+		<br/>
+
+		<h4>Battery:</h4>
+		<br/>
+		<ul>
+			</li><li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Capacity:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.Capacity}}</li>
+				</ul>
+			</li>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>StandbyTime:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.StandbyTime}}</li>
+				</ul>
+			</li>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Talk time:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.Talktime}}</li>
+				</ul>
+			</li>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Wireless Charging:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.WirelessCharging}}</li>
+				</ul>
+			</li>
+		</ul>
+		<br/>
+
+		<h4>Technology:</h4>
+		<br/>
+		<ul>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>UMTS:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.UMTS}}</li>
+				</ul>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>GSM:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.GSM}}</li>
+				</ul>
+			</li>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Data:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.Datas}}</li>
+				</ul>
+			</li>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Navigations:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.Navigations}}</li>
+				</ul>
+			</li>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Micro SIM:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.MicroSim}}</li>
+				</ul>
+			</li>
+		</ul>
+		<br/>
+
+		<h4>Multimedia:</h4>
+		<br/>
+		<ul>
+			</li><li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Accessories:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.Accessories}}</li>
+				</ul>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Notifications:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.Notifications}}</li>
+				</ul>
+			</li>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Speakers:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.Speakers}}</li>
+				</ul>
+			</li>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Youtube Player:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.YoutubePlayer}}</li>
+				</ul>
+			</li>
+			<li class="s_lv_1">
+				<strong class=" s_lv_1 "><center>Other:</center></strong>
+				<ul class=" s_lv_1 ">
+					<li>{{=r.Other}}</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	{{pass}}
+

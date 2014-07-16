@@ -1,0 +1,34 @@
+#footer{
+    background-color: #C7C7C7;
+    width: 100%;
+    padding-top:15px;
+    padding-bottom:15px;
+}
+
+#footer h4 {
+    text-decoration: underline;
+    color: grey;
+    padding-left: 10px;
+}
+
+#footer ul{
+    list-style-type: none;    
+    display: inline;
+}
+
+#footer ul ul{
+    display: inline-table;
+    list-style-type: none;
+    padding-right: 10%;
+    width:323px;
+}
+
+#loser{
+    display: inline;
+    padding-left: 50px;
+}
+
+a {
+    display: inline;
+    padding-left:10px;
+}

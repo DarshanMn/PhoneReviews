@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{=T.accepted_language or 'en'}}"> 
+<head>
+<title>{{=response.title or request.application}}</title>
+  <meta charset="utf-8" />
+    <meta name="application-name" content="{{=request.application}}" />
+
+  <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
+  <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
+  <link rel="stylesheet" href="{{=URL('static','css/footer.css')}}" type='text/css'>
+
+  <!-- All JavaScript at the bottom, except for Modernizr which enables
+       HTML5 elements & feature detects -->
+  <script src="{{=URL('static','js/modernizr.custom.js')}}"></script>
+
+  <!-- include stylesheets -->
+  {{
+  response.files.insert(0,URL('static','css/web2py.css'))
+  response.files.insert(0,URL('static','css/bootstrap.css'))
+  response.files.insert(0,URL('static','css/offcanvas.css'))
+  response.files.insert(0,URL('static','css/untitled.css'))
+  response.files.insert(1,URL('static','css/bootstrap.min.css'))
+  response.files.insert(2,URL('static','css/bootstrap-responsive.min.css'))
+  response.files.insert(3,URL('static','css/web2py_bootstrap.css'))
+  response.files.insert(3,URL('static','css/specifications.css'))
+  }}
+
+  {{include 'web2py_ajax.html'}}
+
+  <noscript><link href="{{=URL('static', 'css/web2py_bootstrap_nojs.css')}}" rel="stylesheet" type="text/css" /></noscript>
+
+  <style type="text/css">
+    a.loser{
+      vertical-align:middle;
+      color:red;
+    }
+  </style>
+  {{block head}}{{end}}
+</head>
+
+<body>
+{{user=request.vars['user']}}
+  <!-- Navbar ================================================== -->
+  <div class="navbar navbar-inverse">
+      <div class="container">
+        {{is_mobile=request.user_agent().is_mobile}}
+        <!-- the next tag is necessary for bootstrap menus, do not remove -->
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse" style="{{='display:none;' if not is_mobile else ''}}">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <ul id="navbar" class="nav pull-left">
+          <li>
+            {{if user is None:}}
+            <a href={{=URL('index')}} style="font-size:20px;"><strong>PhoneStats</strong></a>
+            {{else:}}
+            <a href={{=URL('index', vars=dict(user=request.vars['user']))}} style="font-size:20px;"><strong>PhoneStats</strong></a>
+            {{pass}}
+          </li>
+        </ul>
+        <ul id="navbar" class="nav pull-right">
+          {{if user is None:}}
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="login.html">Login</a>
+          </li>
+          <li>
+            <a href="register.html">Register</a>
+          </li>
+          {{else:}}
+          <li>
+            <a href={{=URL('index', vars=dict(user=request.vars['user']))}}>Home</a>
+          </li>
+          <li>
+            <a href={{=URL('profile', vars=dict(user=request.vars['user']))}}>{{=request.vars['user']}}</a>
+          </li>
+          {{pass}}
+        </ul>
+        <div class="{{='nav-collapse' if is_mobile else 'nav'}}">
+        </div><!--/.nav-collapse -->
+      </div>
+  </div><!--/top navbar -->
+
+{{block page}}
+<div class="container-fluid">
+  <div class="row-fluid">
+    {{block sidebar}}
+    <div class="span3">
+      <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+          <li class="nav-header">Phones</li>
+          <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                {{request_uri = URL(args=request.args, vars=request.vars, host=True)}}
+                var url = "{{=request_uri}}";
+                if (url.match("Apple")){
+                  var c=document.getElementById("man2");
+                  c.className="active";          
+                }
+                else if(url.match("BlackBerry")) {
+                  var c=document.getElementById("man3");
+                  c.className="active";
+                }
+                else if(url.match("HTC")){
+                  var c=document.getElementById("man4");
+                  c.className="active";
+                }
+                else if(url.match("Nexus")){
+                  var c=document.getElementById("man5");
+                  c.className="active";
+                }
+                else if(url.match("Nokia")){
+                  var c=document.getElementById("man6");
+                  c.className="active";
+                }
+                else if(url.match("Samsung")){
+                  var c=document.getElementById("man7");
+                  c.className="active";
+                }
+                else if(url.match("Sony")){
+                  var c=document.getElementById("man8");
+                  c.className="active";
+                }
+                else{
+                  var c=document.getElementById("man1");
+                  c.className="active";
+                }
+              }, false);
+          </script>
+          {{if user is None:}}
+          <li id="man1">
+            <a href={{=URL('index')}}>Top Phones</a>
+          </li>
+          <li id="man2">
+            <a href={{=URL('products', vars=dict(manufacturer='Apple'))}}>Apple</a>
+          </li>
+          <li id="man3">
+            <a href={{=URL('products', vars=dict(manufacturer='BlackBerry'))}}>Blackberry</a>
+          </li>
+          <li id="man4">
+            <a href={{=URL('products', vars=dict(manufacturer='HTC'))}}>HTC</a>
+          </li>
+          <li id="man5">
+            <a href={{=URL('products', vars=dict(manufacturer='Nexus'))}}>Nexus</a>
+          </li>
+          <li id="man6">
+            <a href={{=URL('products', vars=dict(manufacturer='Nokia'))}}>Nokia</a>
+          </li>
+          <li id="man7">
+            <a href={{=URL('products', vars=dict(manufacturer='Samsung'))}}>Samsung</a>
+          </li>
+          <li id="man8">
+            <a href={{=URL('products', vars=dict(manufacturer='Sony'))}}>Sony</a>
+          </li>
+          {{else:}}
+          <li id="man1">
+            <a href={{=URL('products', vars=dict(user=request.vars['user'], manufacturer='TopPhones'))}}>Top Phones</a>
+          </li>
+          <li id="man2">
+            <a href={{=URL('products', vars=dict(user=request.vars['user'], manufacturer='Apple'))}}>Apple</a>
+          </li>
+          <li id="man3">
+            <a href={{=URL('products', vars=dict(user=request.vars['user'], manufacturer='Blackberry'))}}>Blackberry</a>
+          </li>
+          <li id="man4">
+            <a href={{=URL('products', vars=dict(user=request.vars['user'], manufacturer='HTC'))}}>HTC</a>
+          </li>
+          <li id="man5">
+            <a href={{=URL('products', vars=dict(user=request.vars['user'], manufacturer='Nexus'))}}>Nexus</a>
+          </li>
+          <li id="man6">
+            <a href={{=URL('products', vars=dict(user=request.vars['user'], manufacturer='Nokia'))}}>Nokia</a>
+          </li>
+          <li id="man7">
+            <a href={{=URL('products', vars=dict(user=request.vars['user'], manufacturer='Samsung'))}}>Samsung</a>
+          </li>
+          <li id="man8">
+            <a href={{=URL('products', vars=dict(user=request.vars['user'], manufacturer='Sony'))}}>Sony</a>
+          </li>
+          {{pass}}
+        </ul>
+      </div>
+    </div>
+    {{end}}
+
+    <div class="span9">
+        {{block header}}
+        <div class="page-header">
+          <div id="tech-slideshow">
+            <div id="tech-slideshow-1"></div>
+            <div id="tech-slideshow-2"></div>
+          </div>
+        </div>
+        {{end}}
+
+
+      <div class="row-fluid">
+          {{block center}}
+          {{include}}
+          {{end}}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{{end}}
+
+  <div id="footer">
+    <ul>
+      <li id="loser">
+        <ul>
+          <li>
+            <h4>Navigation: </h4>
+          </li>
+          {{if user is None:}}
+              <li>
+                <a href={{=URL('index')}}>Top Phones</a>
+              </li>
+              <li>
+                <a href={{=URL('products', vars=dict(manufacturer='Apple'))}}>Apple</a>
+              </li>
+              <li>
+                <a href={{=URL('products', vars=dict(manufacturer='BlackBerry'))}}>BlackBerry</a>
+              </li>
+              <li>
+                <a href={{=URL('products', vars=dict(manufacturer='HTC'))}}>HTC</a>
+              </li>
+              <li>
+                <a href={{=URL('products', vars=dict(manufacturer='Nokia'))}}>Nokia</a>
+              </li>
+              <li>
+                <a href={{=URL('products', vars=dict(manufacturer='Samsung'))}}>Samsung</a>
+              </li>
+              <li>
+                <a href={{=URL('products', vars=dict(manufacturer='Sony'))}}>Sony</a>
+              </li>
+          {{else:}}
+              <li>
+                <a href={{=URL('products', vars=dict(user=request.vars['user'], manufacturer='TopPhones'))}}>Top Phones</a>
+              </li>
+              <li>
+                <a href={{=URL('products', vars=dict(user=request.vars['user'], manufacturer='Apple'))}}>Apple</a>
+              </li>
+              <li>
+                <a href={{=URL('products', vars=dict(user=request.vars['user'], manufacturer='Blackberry'))}}>Blackberry</a>
+              </li>
+              <li>
+                <a href={{=URL('products', vars=dict(user=request.vars['user'], manufacturer='HTC'))}}>HTC</a>
+              </li>
+              <li>
+                <a href={{=URL('products', vars=dict(user=request.vars['user'], manufacturer='Nokia'))}}>Nokia</a>
+              </li>
+              <li>
+                <a href={{=URL('products', vars=dict(user=request.vars['user'], manufacturer='Samsung'))}}>Samsung</a>
+              </li>
+              <li>
+                <a href={{=URL('products', vars=dict(user=request.vars['user'], manufacturer='Sony'))}}>Sony</a>
+              </li>
+          {{pass}}
+        </ul>
+      </li>
+      <li id="loser">
+        <ul>
+          <li>
+            <h4>Follow Us:</h4>
+          </li>
+          <li>
+            <img src={{=URL('static','images/facebook.png')}}/>
+            <a href="">Facebook</a>
+          </li>
+          <li>
+            <img src={{=URL('static','images/twitter.png')}}/>
+            <a href="">Twitter</a>
+          </li>
+          <li>
+            <img src={{=URL('static','images/gplus-32.png')}}/>
+            <a href="">Google Plus</a>
+          </li>
+          <li>
+            <img src={{=URL('static','images/gplus-32.png')}}/>
+            <a href="">Some More</a>
+          </li>
+          <li>
+            <img src={{=URL('static','images/gplus-32.png')}}/>
+            <a href="">Some More</a>
+          </li>
+        </ul>
+      </li>
+      <li id="loser">
+        <ul>
+          <li>
+            <h4>Other Links: </h4>
+          </li>          
+          <li>
+            <a href="">About Us</a>
+          </li>
+          <li>
+            <a href="">Contact Us</a>
+          </li>
+          <li>
+            <a href="">Terms of Service</a>
+          </li>
+          <li>
+            <a href="">Blog</a>
+          </li>
+          <li>
+            <a href="">Team </a>
+          </li>
+          <li>
+            <a href="">Partners</a>
+          </li>
+          <li>
+            <a href="">Sponsors</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- The javascript =============================================
+       (Placed at the end of the document so the pages load faster) -->
+  <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
+  <script src="{{=URL('static','js/web2py_bootstrap.js')}}"></script>
+  
+  {{if response.google_analytics_id:}}
+  <script src="{{=URL('static','js/analytics.min.js')}}"></script>
+  <script type="text/javascript">
+  analytics.initialize({
+    'Google Analytics':{trackingId:'{{=response.google_analytics_id}}'} 
+  });</script>
+  {{pass}}
+  <script src="{{=URL('static','js/share.js',vars=dict(static=URL('static','images')))}}"></script>
+  <script src="{{=URL('static','js/jsapi.js')}}"></script>
+
+  <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        {{ rows = db(db.phone_id.id==1).select() }}
+        {{if len(rows):}}
+          {{ for r in rows: }}
+          var data = google.visualization.arrayToDataTable([
+            ['Type', 'No. of Reviews'],
+            ['Good',     {{=r.good}}],
+            ['Bad',      {{=r.bad}}],
+          ]);
+
+          var options = {
+            title: 'Reviews',
+            is3D: true,
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+          chart.draw(data, options);
+          {{pass}}
+          {{pass}}
+      }
+  </script>
+</body>
+</html>

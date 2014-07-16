@@ -1,0 +1,199 @@
+{{extend 'phone.html'}}
+
+{{phone= request.vars['phone']}}
+
+{{rows = db(db.phone_id.name==phone).select(db.phone_id.id)}}
+{{for r in rows:}}
+{{id=r.id}}
+{{pass}}
+
+<textarea id="text" style="margin:5px"></textarea>
+
+<div class="button" style="padding-left:5px;"  onclick="getText()">
+	<button > Write a Review </button>
+</div>
+
+<script>
+	var text, docCount, posCount, negCount, totalPosWords, totalNegWords, totalWords, pc;
+	var pxcPos = 1.0;
+	var pxcNeg = 1.0;
+	var set = 0;
+	var words, pcdPos, pcdNeg;
+	var posPer, negPer;
+	var posWords = new Array();
+	var posFrequency = new Array();
+	var negWords = new Array();
+	var negFrequency = new Array();
+	var holder;
+
+	function getText() {
+		text = document.getElementById("text").value;
+		getData();
+		setReview();
+
+		pxcPos = 1.0;
+		pxcNeg = 1.0;
+
+		words = text.split(" ");
+		for (word in words) {
+			if (set) {
+					words[word] = "!" + word;
+					set=0;
+			}
+			if (words[word]=="not")
+				set=1;
+
+			pxcPos = pxcPos * (parseFloat(getFeatures(word,"positive")+1.0)/parseFloat(totalWords));
+			pxcNeg = pxcNeg * (parseFloat(getFeatures(word,"negative")+1.0)/parseFloat(totalWords));
+		}
+
+		pcdPos = parseFloat(pc) * parseFloat(pxcPos);
+		pcdNeg = parseFloat(pc) * parseFloat(pxcNeg);
+
+		if (pcdPos >= pcdNeg){
+			posPer=pcdPos/(pcdPos + pcdNeg) * 100;
+			print("negative"+ " " + posPer);			
+		}
+		else {
+			negPer=pcdNeg/(pcdPos + pcdNeg) * 100;
+			print("negative"+ " " + negPer);
+		}
+	}
+
+
+	function getFeatures(word, type){
+		{{ rows=db1().select(db1.positive_words.words)}}
+		{{if len(rows):}}
+			{{for r in rows:}}
+				posWords.push("{{=r.words}}");
+			{{pass}}
+		{{pass}}
+
+		{{ rows=db1().select(db1.positive_words.frequency)}}
+		{{if len(rows):}}
+			{{for r in rows:}}
+				posFrequency.push("{{=r.frequency}}");
+			{{pass}}
+		{{pass}}
+
+		{{ rows=db1().select(db1.negative_words.words)}}
+		{{if len(rows):}}
+			{{for r in rows:}}
+				negWords.push("{{=r.words}}");
+			{{pass}}
+		{{pass}}
+
+		{{ rows=db1().select(db1.negative_words.frequency)}}
+		{{if len(rows):}}
+			{{for r in rows:}}
+				negFrequency.push("{{=r.frequency}}");
+			{{pass}}
+		{{pass}}
+
+		if (type=="positive") {
+			for(i=0;i<posWords.length;i++) {
+				if (posWords[i]==word) {
+					holder=i;
+					break;
+				}
+				else
+					return 1;
+			}
+			return posFrequency[holder];
+		}
+		else {
+			for(i=0;i<negWords.length;i++) {
+				if (negWords[i]==word) {
+					holder=i;
+					break;
+				}
+				else
+					return 1;
+			}
+			return negFrequency[holder];			
+		}
+	}
+
+	function setReview() {
+			var pattern = /[.,;<>+:_=!\\\'\"?~$^*|`]/;
+			text = text.replace(".", "");
+			text = text.replace(",", "");
+			text = text.replace(";", "");
+			text = text.replace("<", "");
+			text = text.replace(">", "");
+			text = text.replace("+", "");
+			text = text.replace(":", "");
+			text = text.replace("_", "");
+			text = text.replace("=", "");
+			text = text.replace("!", "");
+			text = text.replace("\\", "");
+			text = text.replace("'", "");
+			text = text.replace("\"", "");
+			text = text.replace("?", "");
+			text = text.replace("'", "");
+			text = text.replace("$", "");
+			text = text.replace("^", "");
+			text = text.replace("*", "");
+			text = text.replace("|", "");
+			text = text.replace("`", "");
+			text = text.replace("/", "");
+		 	text = text.replace(")","");
+			text = text.replace("(","");
+		 	text = text.replace("]","");
+		 	text = text.replace("[","");
+		 	text = text.replace("-","");
+			text = text.toLowerCase();
+	}
+
+	function getData() {
+		{{sum=db1.doc_frequency.total.sum()}};
+		docCount = {{=db1().select(sum).first()[sum]}} + 1;
+
+		{{rows=db1(db1.doc_frequency.words=="positive").select(db1.doc_frequency.total)}}
+		{{for r in rows:}}
+		posCount = {{=r.total}} + 1;
+		{{pass}}
+
+		{{rows=db1(db1.doc_frequency.words=="negative").select(db1.doc_frequency.total)}}
+		{{for r in rows:}}
+		negCount = {{=r.total}} + 1;
+		{{pass}}
+
+		{{sum=db1.positive_words.frequency.sum()}};
+		totalPosWords = {{=db1().select(sum).first()[sum]}} + 1;
+
+		{{sum=db1.negative_words.frequency.sum()}};
+		totalNegWords = {{=db1().select(sum).first()[sum]}} + 1;
+
+		totalWords = totalNegWords + totalPosWords + 1;
+
+		pc = parseFloat(posCount) / parseFloat(docCount);
+	}
+
+	function print(word){
+		document.write(word);
+	}
+</script>
+
+
+
+
+
+<h2 style="padding-left:0.4cm">Good Customer Reviews</h2>
+{{ rows = db((db.reviews.types==1)&(db.reviews.phone_id==id)).select() }}
+{{if len(rows):}}
+	<ol style="padding-left:0.4cm; padding-top:0.5cm">
+	{{ for r in rows: }}
+		{{abc = r.review}}
+		{{abc = abc.strip(' ')}}
+		<div id="list2" class="row" style="padding-bottom:0.3cm; padding-right:0.5cm"> 
+			<li style="padding-left:0.3cm">
+				<p style="color:grey;">By <span style="color:blue;">{{=r.user_name}}</span> on {{=r.dates}}</p>
+				<p>{{=abc}}</p>
+				{{rid=r.id}}
+			</li>
+		</div>
+	{{pass}}
+	</ol>
+{{pass}}
+

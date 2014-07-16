@@ -1,0 +1,111 @@
+{{extend 'phone.html'}}
+{{phone=request.vars['phone']}}
+
+{{row = db(db.phone_id.name==phone).select(db.phone_id.id)}}
+{{if len(row):}}
+{{for r in row:}}
+{{id = r.id}}
+{{pass}}
+{{else:}}
+{{id=0}}
+{{pass}}
+
+{{import datetime,time}}
+{{rows=db(db.reviews.phone_id==id).select()}}
+{{good_month={"1":0, "2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0};}}
+{{bad_month={"1":0, "2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0};}}
+
+{{if len(rows):}} 
+{{for r in rows:}}
+	{{date=datetime.datetime.strptime(r.dates.strip(),"%B %d, %Y")}}
+	{{var=int('{0:%m}'.format(date,"month"))}}
+	{{day=int('{0:%d}'.format(date,"day"))}}
+	{{year=int('{0:%Y}'.format(date,"year"))}}
+	{{if year==2014 and r.types==1:}}
+		{{good_month[str(var)] += 1}}
+		{{pass}}
+	{{else:}}
+		{{bad_month[str(var)] += 1}}
+		{{pass}}
+{{pass}}
+{{pass}}
+
+{{good_count = db((db.reviews.phone_id==id) & (db.reviews.types==1)).count()}}
+{{bad_count = db((db.reviews.phone_id==id) & (db.reviews.types==0)).count()}}
+{{pass}}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>
+      Google Visualization API Sample
+    </title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1', {packages: ['corechart']});
+    </script>
+    <script type="text/javascript">
+
+      function drawChart() {
+        var data1 = google.visualization.arrayToDataTable([
+          ['Reviews', 'Count'],
+          ['Good Reviews',      {{=good_count}}],
+          ['Bad Reviews',      {{=bad_count}}]
+        ]);
+
+        var data2 = google.visualization.arrayToDataTable([
+          ['Month', 'Good Reviews', 'Bad Reviews'],
+          ['Jan',  {{=good_month['1']}},      {{=bad_month['1']}}],
+          ['Feb',  {{=good_month['2']}},      {{=bad_month['2']}}],
+          ['Mar',  {{=good_month['3']}},      {{=bad_month['3']}}],
+          ['Apr',  {{=good_month['4']}},      {{=bad_month['4']}}],
+          ['May',  {{=good_month['5']}},      {{=bad_month['5']}}],
+          ['Jun',  {{=good_month['6']}},      {{=bad_month['6']}}],
+          ['Jul',  {{=good_month['7']}},      {{=bad_month['7']}}],
+          ['Aug',  {{=good_month['8']}},      {{=bad_month['8']}}],
+          ['Sep',  {{=good_month['9']}},      {{=bad_month['9']}}],
+          ['Oct',  {{=good_month['10']}},      {{=bad_month['10']}}],
+          ['Nov',  {{=good_month['11']}},      {{=bad_month['11']}}],
+        ]);
+
+        var options1 = {
+          title: 'Phone Reviews - Number of good/bad reviews per month'
+        };
+
+        var options2 = {
+          title : 'Phone Reviews - Number of good/bad Reviews',
+          vAxis: {title: "Reviews"},
+          hAxis: {title: "Month"},
+          seriesType: "bars",
+          series: {5: {type: "line"}}
+        };
+
+        var chart1 = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart1.draw(data1, options1);
+
+        var chart2 = new google.visualization.ComboChart(document.getElementById('chart_div'));
+        chart2.draw(data2, options2);
+
+      }
+      google.setOnLoadCallback(drawChart);
+    </script>
+  </head>
+  <body>
+    <div class="features">
+      <div id="chart_div" style="width: 800px; height: 600px;"></div>
+      <br/>
+      <br/>
+      <div id="piechart" style="width: 800px; height: 600px;"></div>
+      <h5> <strong>Positive Tag Cloud </strong><h5>
+      <br/>
+      {{phone=phone.replace(" ","_")}}
+      <img src="{{=URL('static','Features/'+phone+'/positive.png')}}" style="width: 800px; height: 600px;"/>  
+      <br/>
+      <br/>
+      <h5> <strong>Negative Tag Cloud </strong><h5>
+      <br/>
+      <img src="{{=URL('static','Features/'+phone+'/negative.png')}}" style="width: 800px; height: 600px;"/>
+    </div>
+  </body>
+</html>

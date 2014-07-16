@@ -1,0 +1,43 @@
+{{extend 'layout.html'}}
+
+{{block subnav}}
+{{end}}
+
+{{block header}}
+{{end}}
+
+{{for row in db().select(db.phone_id.ALL, orderby=~db.phone_id.rating):}}
+	{{ rows = db(db.product_list.name==row.name).select() }}
+		{{if len(rows):}}
+			{{ for r in rows: }}
+					{{if r.imageUrl!="image" or r.name!="title" or r.description!="desc":}}
+				    <div class="row">     
+				    	<br/>
+				        <div class="span2">
+				        	{{if not request.vars['user']:}}
+							<a class="imageLinkWrapper" href={{=URL('specifications', vars=dict(manufacturer=r.manufacturer, phone=r.name))}}>
+							{{else:}}
+							<a class="imageLinkWrapper" href={{=URL('specifications', vars=dict(manufacturer=r.manufacturer, phone=r.name, user=request.vars['user']))}}>
+							{{pass}}
+								<figure class=" img">
+								  	<img src={{=r.imageUrl}}></img>
+								</figure>
+							</a>
+						</div>
+				        <div class="span9">
+				        	{{bcd=r.name}}
+				        	{{if not request.vars['user']:}}				        	
+				        	<a class="imageLinkWrapper" href={{=URL('specifications', vars=dict(manufacturer=r.manufacturer, phone=r.name))}}>
+				        	{{else:}}
+				        	<a class="imageLinkWrapper" href={{=URL('specifications', vars=dict(manufacturer=r.manufacturer, phone=r.name, user=request.vars['user']))}}>
+				        	{{pass}}
+				        		<h3>{{=bcd.strip(",")}}</h3>
+				        	</a>
+				        	<p>{{=r.description}}</p>
+				  		</div>
+				  	</div>
+					{{pass}}
+				
+			{{pass}}
+	{{pass}}
+{{pass}}

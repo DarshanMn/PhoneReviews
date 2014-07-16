@@ -1,0 +1,866 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.NameError'> name 'var' is not defined"
+p3
+sS'layer'
+p4
+S'/home/darshan-ubuntu/Project/web2py/applications/PhoneReviews/views/default/features.html'
+p5
+sS'code'
+p6
+S'phone=request.vars[\'phone\']\nresponse.write(\'\\n\', escape=False)\nrow = db(db.phone_id.name==phone).select(db.phone_id.id)\nresponse.write(\'\\n\', escape=False)\nfor r in row:\n    response.write(\'\\n\', escape=False)\n    id = r.id\n    response.write(\'\\n\', escape=False)\n    pass\nresponse.write(\'\\n\', escape=False)\nimport datetime,time\nresponse.write(\'\\n\', escape=False)\nrows=db(db.reviews.id==id).select()\nresponse.write(\'\\n\', escape=False)\ngood_month={"1":0, "2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0};\nresponse.write(\'\\n\', escape=False)\nbad_month={"1":0, "2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0};\nresponse.write(\'\\n\', escape=False)\nfor r in rows:\n    response.write(\'\\n\\t\', escape=False)\n    date=datetime.datetime.strptime(r.dates.strip(),"%B %d, %Y")\n    response.write(\'\\n\\t\', escape=False)\n    var=int(\'{0:%m}\'.format(date,"month"))\n    response.write(\'\\n\\t\', escape=False)\n    day=int(\'{0:%d}\'.format(date,"day"))\n    response.write(\'\\n\\t\', escape=False)\n    year=int(\'{0:%Y}\'.format(date,"year"))\n    response.write(\'\\n\\t\', escape=False)\n    if year==2014 and r.types==1:\n        response.write(\'\\n\\t\\t\', escape=False)\n        good_month[str(var)] += 1\n        response.write(\'\\n\\t\\t\', escape=False)\n        pass\n    response.write(\'\\n\\t\', escape=False)\nelse:\n    response.write(\'\\n\\t\\t\', escape=False)\n    bad_month[str(var)] += 1\n    response.write(\'\\n\\t\\t\', escape=False)\n    pass\nresponse.write(\'\\n\', escape=False)\npass\nresponse.write(\'\\n\\n<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">\\n<html xmlns="http://www.w3.org/1999/xhtml">\\n  <head>\\n    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>\\n    <title>\\n      Google Visualization API Sample\\n    </title>\\n    <script type="text/javascript" src="https://www.google.com/jsapi"></script>\\n    <script type="text/javascript">\\n      google.load(\\\'visualization\\\', \\\'1\\\', {packages: [\\\'corechart\\\']});\\n    </script>\\n    <script type="text/javascript">\\n      function drawVisualization() {\\n        // Some raw data (not necessarily accurate)\\n\\n        var data = google.visualization.arrayToDataTable([\\n          [\\\'Month\\\', \\\'Good Reviews\\\', \\\'Bad Reviews\\\'],\\n          [\\\'Jan\\\',  \', escape=False)\nresponse.write(good_month[\'1\'])\nresponse.write(\',      \', escape=False)\nresponse.write(bad_month[\'1\'])\nresponse.write("],\\n          [\'Feb\',  ", escape=False)\nresponse.write(good_month[\'2\'])\nresponse.write(\',      \', escape=False)\nresponse.write(bad_month[\'2\'])\nresponse.write("],\\n          [\'Mar\',  ", escape=False)\nresponse.write(good_month[\'3\'])\nresponse.write(\',      \', escape=False)\nresponse.write(bad_month[\'3\'])\nresponse.write("],\\n          [\'Apr\',  ", escape=False)\nresponse.write(good_month[\'4\'])\nresponse.write(\',      \', escape=False)\nresponse.write(bad_month[\'4\'])\nresponse.write("],\\n          [\'May\',  ", escape=False)\nresponse.write(good_month[\'5\'])\nresponse.write(\',      \', escape=False)\nresponse.write(bad_month[\'5\'])\nresponse.write("],\\n          [\'Jun\',  ", escape=False)\nresponse.write(good_month[\'6\'])\nresponse.write(\',      \', escape=False)\nresponse.write(bad_month[\'6\'])\nresponse.write("],\\n          [\'Jul\',  ", escape=False)\nresponse.write(good_month[\'7\'])\nresponse.write(\',      \', escape=False)\nresponse.write(bad_month[\'7\'])\nresponse.write("],\\n          [\'Aug\',  ", escape=False)\nresponse.write(good_month[\'8\'])\nresponse.write(\',      \', escape=False)\nresponse.write(bad_month[\'8\'])\nresponse.write("],\\n          [\'Sep\',  ", escape=False)\nresponse.write(good_month[\'9\'])\nresponse.write(\',      \', escape=False)\nresponse.write(bad_month[\'9\'])\nresponse.write("],\\n          [\'Oct\',  ", escape=False)\nresponse.write(good_month[\'10\'])\nresponse.write(\',      \', escape=False)\nresponse.write(bad_month[\'10\'])\nresponse.write("],\\n          [\'Nov\',  ", escape=False)\nresponse.write(good_month[\'11\'])\nresponse.write(\',      \', escape=False)\nresponse.write(bad_month[\'11\'])\nresponse.write(\'],\\n        ]);\\n\\n        var options = {\\n          title : \\\'Phone Reviews\\\',\\n          vAxis: {title: "Reviews"},\\n          hAxis: {title: "Month"},\\n          seriesType: "bars",\\n          series: {5: {type: "line"}}\\n        };\\n\\n        var chart = new google.visualization.ComboChart(document.getElementById(\\\'chart_div\\\'));\\n        chart.draw(data, options);\\n      }\\n      google.setOnLoadCallback(drawVisualization);\\n    </script>\\n  </head>\\n  <body>\\n    \', escape=False)\nresponse.write(id)\nresponse.write(\'\\n    <div id="chart_div" style="width: 900px; height: 500px;"></div>\\n  </body>\\n</html>\', escape=False)'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__hash__'
+p12
+S"<method-wrapper '__hash__' of exceptions.NameError object>"
+p13
+sS'__setattr__'
+p14
+S"<method-wrapper '__setattr__' of exceptions.NameError object>"
+p15
+sS'__reduce_ex__'
+p16
+S'<built-in method __reduce_ex__ of exceptions.NameError object>'
+p17
+sS'__getslice__'
+p18
+S"<method-wrapper '__getslice__' of exceptions.NameError object>"
+p19
+sS'__getitem__'
+p20
+S"<method-wrapper '__getitem__' of exceptions.NameError object>"
+p21
+sS'__setstate__'
+p22
+S'<built-in method __setstate__ of exceptions.NameError object>'
+p23
+sS'__reduce__'
+p24
+S'<built-in method __reduce__ of exceptions.NameError object>'
+p25
+sS'__str__'
+p26
+S"<method-wrapper '__str__' of exceptions.NameError object>"
+p27
+sS'__format__'
+p28
+S'<built-in method __format__ of exceptions.NameError object>'
+p29
+sS'__getattribute__'
+p30
+S"<method-wrapper '__getattribute__' of exceptions.NameError object>"
+p31
+sS'__class__'
+p32
+S"<type 'exceptions.NameError'>"
+p33
+sS'__unicode__'
+p34
+S'<built-in method __unicode__ of exceptions.NameError object>'
+p35
+sS'__delattr__'
+p36
+S"<method-wrapper '__delattr__' of exceptions.NameError object>"
+p37
+sS'__subclasshook__'
+p38
+S'<built-in method __subclasshook__ of type object>'
+p39
+sS'__repr__'
+p40
+S"<method-wrapper '__repr__' of exceptions.NameError object>"
+p41
+sS'args'
+p42
+S'("name \'var\' is not defined",)'
+p43
+sS'__dict__'
+p44
+S'{}'
+p45
+sS'__sizeof__'
+p46
+S'<built-in method __sizeof__ of exceptions.NameError object>'
+p47
+sS'__doc__'
+p48
+S"'Name not found globally.'"
+p49
+sS'__init__'
+p50
+S"<method-wrapper '__init__' of exceptions.NameError object>"
+p51
+sS'__new__'
+p52
+S'<built-in method __new__ of type object>'
+p53
+ssS'evalue'
+p54
+S"name 'var' is not defined"
+p55
+sS'request'
+p56
+cgluon.html
+XML_unpickle
+p57
+(S'soa\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">ajax</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">application</td><td style="vertical-align:top;">:</td><td><div>PhoneReviews</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cid</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">controller</td><td style="vertical-align:top;">:</td><td><div>default</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">registered</td><td style="vertical-align:top;">:</td><td><div>yes<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_admin</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-b0af0b1d-45c0-49f5-bfca-adc01f2425b9<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_phonereviews</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-31fb2bc5-1a83-4476-815e-b74057d2d072<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_welcome</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-349d7a0d-897f-4011-ba50-ade12076bef6<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">env</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_ENCODING</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_LANGUAGE</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.5</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CACHE_CONTROL</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONNECTION</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_COOKIE</td><td style="vertical-align:top;">:</td><td><div>registered=yes; session_id_welcome=127.0.0.1-349d7a0d-897f-4011-ba50-ade12076bef6; session_id_phonereviews=127.0.0.1-31fb2bc5-1a83-4476-815e-b74057d2d072; session_id_admin=127.0.0.1-b0af0b1d-45c0-49f5-bfca-adc01f2425b9</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_HOST</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_REFERER</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/PhoneReviews/default/specifications?manufacturer=Nexus&amp;phone=HTC+Nexus+One</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_USER_AGENT</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:27.0) Gecko/20100101 Firefox/27.0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">PATH_INFO</td><td style="vertical-align:top;">:</td><td><div>/PhoneReviews/default/features</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">QUERY_STRING</td><td style="vertical-align:top;">:</td><td><div>manufacturer=Nexus&amp;phone=HTC+Nexus+One&amp;user=None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_ADDR</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_PORT</td><td style="vertical-align:top;">:</td><td><div>35391</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REQUEST_METHOD</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SCRIPT_NAME</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_NAME</td><td style="vertical-align:top;">:</td><td><div>darshan</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PORT</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PROTOCOL</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_SOFTWARE</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/home/darshan-ubuntu/Project/web2py/applications/admin/&#x27;, &#x27;/home/darshan-ubuntu/Project/web2py/applications/welcome/&#x27;, &#x27;/home/darshan-ubuntu/Project/web2py/applications/PhoneReviews/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/home/darshan-ubuntu/Project/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x8bb72cc: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [&#x27;127.0.1.1&#x27;], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;scheduler_groups&#x27;: None, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;darshan&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/home/darshan-ubuntu/Project/web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/home/darshan-ubuntu/Project/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_encoding</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_language</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.5</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cache_control</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_connection</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cookie</td><td style="vertical-align:top;">:</td><td><div>registered=yes; session_id_welcome=127.0.0.1-349d7a0d-897f-4011-ba50-ade12076bef6; session_id_phonereviews=127.0.0.1-31fb2bc5-1a83-4476-815e-b74057d2d072; session_id_admin=127.0.0.1-b0af0b1d-45c0-49f5-bfca-adc01f2425b9</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_host</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_referer</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/PhoneReviews/default/specifications?manufacturer=Nexus&amp;phone=HTC+Nexus+One</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_user_agent</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:27.0) Gecko/20100101 Firefox/27.0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>darshan</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>127.0.1.1</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path_info</td><td style="vertical-align:top;">:</td><td><div>/PhoneReviews/default/features</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">query_string</td><td style="vertical-align:top;">:</td><td><div>manufacturer=Nexus&amp;phone=HTC+Nexus+One&amp;user=None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_addr</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_port</td><td style="vertical-align:top;">:</td><td><div>35391</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_method</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_uri</td><td style="vertical-align:top;">:</td><td><div>/PhoneReviews/default/features?manufacturer=Nexus&amp;phone=HTC+Nexus+One&amp;user=None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">script_name</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_name</td><td style="vertical-align:top;">:</td><td><div>darshan</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_port</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_protocol</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_software</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_path</td><td style="vertical-align:top;">:</td><td><div>/home/darshan-ubuntu/Project/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.9.5-trunk+timestamp.2014.04.02.09.18.42</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0xb752e0d0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x8d287dc&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0xb2ca196c&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0xb752e0d0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x8d287dc&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0xb2ca196c&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">extension</td><td style="vertical-align:top;">:</td><td><div>html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">folder</td><td style="vertical-align:top;">:</td><td><div>/home/darshan-ubuntu/Project/web2py/applications/PhoneReviews/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">function</td><td style="vertical-align:top;">:</td><td><div>features</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">global_settings</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/home/darshan-ubuntu/Project/web2py/applications/admin/&#x27;, &#x27;/home/darshan-ubuntu/Project/web2py/applications/welcome/&#x27;, &#x27;/home/darshan-ubuntu/Project/web2py/applications/PhoneReviews/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/home/darshan-ubuntu/Project/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x8bb72cc: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [&#x27;127.0.1.1&#x27;], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;scheduler_groups&#x27;: None, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;darshan&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/home/darshan-ubuntu/Project/web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/home/darshan-ubuntu/Project/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>darshan</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>127.0.1.1</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.9.5-trunk+timestamp.2014.04.02.09.18.42</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_https</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_local</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_restful</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">now</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2014, 4, 25, 19, 19, 22, 867949)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_args</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_extension</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">url</td><td style="vertical-align:top;">:</td><td><div>/PhoneReviews/default/features</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">utcnow</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2014, 4, 25, 13, 49, 22, 867982)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">uuid</td><td style="vertical-align:top;">:</td><td><div>PhoneReviews/127.0.0.1.2014-04-25.19-19-22.7364af95-e39f-47c8-9fdc-92b3426378ab</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi</td><td style="vertical-align:top;">:</td><td><div>&lt;gluon.main.LazyWSGI object at 0xabc9ab6c&gt;</div></td></tr></table></div>'
+tRp58
+sS'frames'
+p59
+(lp60
+(dp61
+S'file'
+p62
+S'/home/darshan-ubuntu/Project/web2py/gluon/restricted.py'
+p63
+sS'dump'
+p64
+(dp65
+S'environment'
+p66
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, 'CAT': <class 'gluon.html.CAT'>, 'CENTER': <class 'gluon.html.CENTER'>, ...}"
+p67
+sS'ccode'
+p68
+S'<code object <module> at 0x92055c0, file "/home/...honeReviews/views/default/features.html", line 1>'
+p69
+ssS'lnum'
+p70
+I220
+sS'lines'
+p71
+(dp72
+I224
+S'        # do not encapsulate (obfuscate) the original RestrictedError'
+p73
+sI215
+S'    try:'
+p74
+sI216
+S'        if isinstance(code, types.CodeType):'
+p75
+sI217
+S'            ccode = code'
+p76
+sI218
+S'        else:'
+p77
+sI219
+S'            ccode = compile2(code, layer)'
+p78
+sI220
+S'        exec ccode in environment'
+p79
+sI221
+S'    except HTTP:'
+p80
+sI222
+S'        raise'
+p81
+sI223
+S'    except RestrictedError:'
+p82
+ssS'call'
+p83
+S'(code=\'phone=request.vars[\\\'phone\\\']\\nresponse.write(\\\'\\\\n\\\',...00px;"></div>\\\\n  </body>\\\\n</html>\\\', escape=False)\', environment={\'A\': <class \'gluon.html.A\'>, \'ANY_OF\': <class \'gluon.validators.ANY_OF\'>, \'Auth\': <class \'gluon.tools.Auth\'>, \'B\': <class \'gluon.html.B\'>, \'BEAUTIFY\': <class \'gluon.html.BEAUTIFY\'>, \'BODY\': <class \'gluon.html.BODY\'>, \'BR\': <class \'gluon.html.BR\'>, \'BUTTON\': <class \'gluon.html.BUTTON\'>, \'CAT\': <class \'gluon.html.CAT\'>, \'CENTER\': <class \'gluon.html.CENTER\'>, ...}, layer=\'/home/darshan-ubuntu/Project/web2py/applications/PhoneReviews/views/default/features.html\')'
+p84
+sS'func'
+p85
+S'restricted'
+p86
+sa(dp87
+g62
+S'/home/darshan-ubuntu/Project/web2py/applications/PhoneReviews/views/default/features.html'
+p88
+sg64
+(dp89
+S'var'
+p90
+S'undefined'
+p91
+sS'good_month'
+p92
+S"{'1': 0, '10': 0, '11': 0, '12': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, ...}"
+p93
+sS'google'
+p94
+g91
+sS'data'
+p95
+g91
+sS'bad_month'
+p96
+S"{'1': 0, '10': 0, '11': 0, '12': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, ...}"
+p97
+ssg70
+I37
+sg71
+(dp98
+I32
+S"        response.write('\\n\\t\\t', escape=False)"
+p99
+sI33
+S'        pass'
+p100
+sI34
+S"    response.write('\\n\\t', escape=False)"
+p101
+sI35
+S'else:'
+p102
+sI36
+S"    response.write('\\n\\t\\t', escape=False)"
+p103
+sI37
+S'    bad_month[str(var)] += 1'
+p104
+sI38
+S"    response.write('\\n\\t\\t', escape=False)"
+p105
+sI39
+S'    pass'
+p106
+sI40
+S"response.write('\\n', escape=False)"
+p107
+sI41
+S'pass'
+p108
+sI42
+S'response.write(\'\\n\\n<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">\\n<html xmlns="http://www.w3.org/1999/xhtml">\\n  <head>\\n    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>\\n    <title>\\n      Google Visualization API Sample\\n    </title>\\n    <script type="text/javascript" src="https://www.google.com/jsapi"></script>\\n    <script type="text/javascript">\\n      google.load(\\\'visualization\\\', \\\'1\\\', {packages: [\\\'corechart\\\']});\\n    </script>\\n    <script type="text/javascript">\\n      function drawVisualization() {\\n        // Some raw data (not necessarily accurate)\\n\\n        var data = google.visualization.arrayToDataTable([\\n          [\\\'Month\\\', \\\'Good Reviews\\\', \\\'Bad Reviews\\\'],\\n          [\\\'Jan\\\',  \', escape=False)'
+p109
+sI43
+S"response.write(good_month['1'])"
+p110
+sI44
+S"response.write(',      ', escape=False)"
+p111
+sI45
+S"response.write(bad_month['1'])"
+p112
+sI46
+S'response.write("],\\n          [\'Feb\',  ", escape=False)'
+p113
+sI47
+S"response.write(good_month['2'])"
+p114
+sI28
+S"    response.write('\\n\\t', escape=False)"
+p115
+sI29
+S'    if year==2014 and r.types==1:'
+p116
+sI30
+S"        response.write('\\n\\t\\t', escape=False)"
+p117
+sI31
+S'        good_month[str(var)] += 1'
+p118
+ssg83
+S'()'
+p119
+sg85
+S'<module>'
+p120
+sasS'pyver'
+p121
+S'Python 2.7.5+: /usr/bin/python (prefix: /usr)'
+p122
+sS'session'
+p123
+g57
+(S's\x1a\x00\x00\x00<div><table></table></div>'
+tRp124
+sS'etype'
+p125
+S"<type 'exceptions.NameError'>"
+p126
+sS'date'
+p127
+S'Fri Apr 25 19:19:22 2014'
+p128
+sS'response'
+p129
+g57
+(S'sy2\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">body</td><td style="vertical-align:top;">:</td><td><div>&lt;cStringIO.StringO object at 0xabc92aa0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_phonereviews</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-31fb2bc5-1a83-4476-815e-b74057d2d072<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">delimiters</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>{{</div></td></tr><tr><td><div>}}</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">files</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generic_patterns</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>*</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">google_analytics_id</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">headers</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">X-Powered-By</td><td style="vertical-align:top;">:</td><td><div>web2py</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">logo</td><td style="vertical-align:top;">:</td><td><div><a class="brand" href="http://www.web2py.com/"><b>web<span>2</span>py</b>&trade;&nbsp;</a></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div><table><tr><td><div>Home</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/PhoneReviews/default/index</div></td></tr><tr><td><div><table></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div><span class="highlighted">web2py</span></div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>My Sites</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/site</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>This App</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/design/PhoneReviews</div></td></tr><tr><td><div>[(&lt;lazyT &#x27;Controller&#x27;&gt;, False, &#x27;/admin/default/edit/PhoneReviews/controllers/default.py&#x27;), (&lt;lazyT &#x27;View&#x27;&gt;, False, &#x27;/admin/default/edit/PhoneReviews/views/default/features.html&#x27;), (&lt;lazyT &#x27;Layout&#x27;&gt;, False, &#x27;/admin/default/edit/PhoneReviews/views/layout.html&#x27;), (&lt;lazyT &#x27;Stylesheet&#x27;&gt;, False, &#x27;/admin/default/edit/PhoneReviews/static/css/web2py.css&#x27;), (&lt;lazyT &#x27;DB Model&#x27;&gt;, False, &#x27;/admin/default/edit/PhoneReviews/models/db.py&#x27;), (&lt;lazyT &#x27;Menu Model&#x27;&gt;, False, &#x27;/admin/default/edit/PhoneReviews/models/menu.py&#x27;), (&lt;lazyT &#x27;Database&#x27;&gt;, False, &#x27;/PhoneReviews/appadmin/index&#x27;), (&lt;lazyT &#x27;Errors&#x27;&gt;, False, &#x27;/admin/default/errors/PhoneReviews&#x27;), (&lt;lazyT &#x27;About&#x27;&gt;, False, &#x27;/admin/default/about/PhoneReviews&#x27;)]</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>web2py.com</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com</div></td></tr><tr><td><div>[(&lt;lazyT &#x27;Download&#x27;&gt;, False, &#x27;http://www.web2py.com/examples/default/download&#x27;), (&lt;lazyT &#x27;Support&#x27;&gt;, False, &#x27;http://www.web2py.com/examples/default/support&#x27;), (&lt;lazyT &#x27;Demo&#x27;&gt;, False, &#x27;http://web2py.com/demo_admin&#x27;), (&lt;lazyT &#x27;Quick Examples&#x27;&gt;, False, &#x27;http://web2py.com/examples/default/examples&#x27;), (&lt;lazyT &#x27;FAQ&#x27;&gt;, False, &#x27;http://web2py.com/AlterEgo&#x27;), (&lt;lazyT &#x27;Videos&#x27;&gt;, False, &#x27;http://www.web2py.com/examples/default/videos/&#x27;), (&lt;lazyT &#x27;Free Applications&#x27;&gt;, False, &#x27;http://web2py.com/appliances&#x27;), (&lt;lazyT &#x27;Plugins&#x27;&gt;, False, &#x27;http://web2py.com/plugins&#x27;), (&lt;lazyT &#x27;Layouts&#x27;&gt;, False, &#x27;http://web2py.com/layouts&#x27;), (&lt;lazyT &#x27;Recipes&#x27;&gt;, False, &#x27;http://web2pyslices.com/&#x27;), (&lt;lazyT &#x27;Semantic&#x27;&gt;, False, &#x27;http://web2py.com/semantic&#x27;)]</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Documentation</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book</div></td></tr><tr><td><div>[(&lt;lazyT &#x27;Preface&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/00&#x27;), (&lt;lazyT &#x27;Introduction&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/01&#x27;), (&lt;lazyT &#x27;Python&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/02&#x27;), (&lt;lazyT &#x27;Overview&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/03&#x27;), (&lt;lazyT &#x27;The Core&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/04&#x27;), (&lt;lazyT &#x27;The Views&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/05&#x27;), (&lt;lazyT &#x27;Database&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/06&#x27;), (&lt;lazyT &#x27;Forms and Validators&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/07&#x27;), (&lt;lazyT &#x27;Email and SMS&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/08&#x27;), (&lt;lazyT &#x27;Access Control&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/09&#x27;), (&lt;lazyT &#x27;Services&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/10&#x27;), (&lt;lazyT &#x27;Ajax Recipes&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/11&#x27;), (&lt;lazyT &#x27;Components and Plugins&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/12&#x27;), (&lt;lazyT &#x27;Deployment Recipes&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/13&#x27;), (&lt;lazyT &#x27;Other Recipes&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/14&#x27;), (&lt;lazyT &#x27;Buy this book&#x27;&gt;, False, &#x27;http://stores.lulu.com/web2py&#x27;)]</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Community</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>None</div></td></tr><tr><td><div>[(&lt;lazyT &#x27;Groups&#x27;&gt;, False, &#x27;http://www.web2py.com/examples/default/usergroups&#x27;), (&lt;lazyT &#x27;Twitter&#x27;&gt;, False, &#x27;http://twitter.com/web2py&#x27;), (&lt;lazyT &#x27;Live Chat&#x27;&gt;, False, &#x27;http://webchat.freenode.net/?channels=web2py&#x27;)]</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Plugins</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>None</div></td></tr><tr><td><div>[(&#x27;plugin_wiki&#x27;, False, &#x27;http://web2py.com/examples/default/download&#x27;), (&lt;lazyT &#x27;Other Plugins&#x27;&gt;, False, &#x27;http://web2py.com/plugins&#x27;), (&lt;lazyT &#x27;Layout Plugins&#x27;&gt;, False, &#x27;http://web2py.com/layouts&#x27;)]</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">meta</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">author</td><td style="vertical-align:top;">:</td><td><div>Your Name &lt;you@example.com&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">description</td><td style="vertical-align:top;">:</td><td><div>a cool new app</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generator</td><td style="vertical-align:top;">:</td><td><div>Web2py Web Framework</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">keywords</td><td style="vertical-align:top;">:</td><td><div>web2py, python, framework</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">models_to_run</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>^\\w+\\.py$</div></td></tr><tr><td><div>^default/\\w+\\.py$</div></td></tr><tr><td><div>^default/features/\\w+\\.py$</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">postprocessing</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_compression_level</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_expires</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_key</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_data_name</td><td style="vertical-align:top;">:</td><td><div>session_data_phonereviews</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_file</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;/home/darshan-ubuntu/Project/web2py/applications/PhoneReviews/sessions/127.0.0.1-31fb2bc5-1a83-4476-815e-b74057d2d072&#x27;, mode &#x27;rb+&#x27; at 0xac51b020&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_filename</td><td style="vertical-align:top;">:</td><td><div>/home/darshan-ubuntu/Project/web2py/applications/PhoneReviews/sessions/127.0.0.1-31fb2bc5-1a83-4476-815e-b74057d2d072</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_hash</td><td style="vertical-align:top;">:</td><td><div>c23a8377045ca7845dfdaea9e6f66fc7</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-31fb2bc5-1a83-4476-815e-b74057d2d072</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_name</td><td style="vertical-align:top;">:</td><td><div>session_id_phonereviews</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_locked</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_masterapp</td><td style="vertical-align:top;">:</td><td><div>PhoneReviews</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_new</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_storage_type</td><td style="vertical-align:top;">:</td><td><div>file</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">status</td><td style="vertical-align:top;">:</td><td><div>200</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">subtitle</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">title</td><td style="vertical-align:top;">:</td><td><div>Phonereviews</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">view</td><td style="vertical-align:top;">:</td><td><div>default/features.html</div></td></tr></table></div>'
+tRp130
+sS'locals'
+p131
+(dp132
+S'Service'
+p133
+S"<class 'gluon.tools.Service'>"
+p134
+sS'OBJECT'
+p135
+S"<class 'gluon.html.OBJECT'>"
+p136
+sS'SQLDB'
+p137
+S"<class 'gluon.dal.DAL'>"
+p138
+sg123
+S"<Storage {'_user_agent': <Storage {'os': <Storag...orage {'version': '27.0', 'name': 'Firefox'}>}>}>"
+p139
+sS'LINK'
+p140
+S"<class 'gluon.html.LINK'>"
+p141
+sS'BR'
+p142
+S"<class 'gluon.html.BR'>"
+p143
+sS'local_import'
+p144
+S'<function <lambda>>'
+p145
+sS'OPTGROUP'
+p146
+S"<class 'gluon.html.OPTGROUP'>"
+p147
+sS'__package__'
+p148
+S'None'
+p149
+sS'row'
+p150
+S'<Rows (1)>'
+p151
+sS'PRE'
+p152
+S"<class 'gluon.html.PRE'>"
+p153
+sS'IS_INT_IN_RANGE'
+p154
+S"<class 'gluon.validators.IS_INT_IN_RANGE'>"
+p155
+sS'IS_LOWER'
+p156
+S"<class 'gluon.validators.IS_LOWER'>"
+p157
+sS'IS_STRONG'
+p158
+S"<class 'gluon.validators.IS_STRONG'>"
+p159
+sS'cache'
+p160
+S'<gluon.cache.Cache object>'
+p161
+sS'IS_IN_DB'
+p162
+S"<class 'gluon.validators.IS_IN_DB'>"
+p163
+sS'TAG'
+p164
+S'<gluon.html.__TAG__ object>'
+p165
+sS'SQLField'
+p166
+S"<class 'gluon.dal.Field'>"
+p167
+sS'mail'
+p168
+S'<gluon.tools.Mail object>'
+p169
+sS'BODY'
+p170
+S"<class 'gluon.html.BODY'>"
+p171
+sS'IS_DATE_IN_RANGE'
+p172
+S"<class 'gluon.validators.IS_DATE_IN_RANGE'>"
+p173
+sS'IFRAME'
+p174
+S"<class 'gluon.html.IFRAME'>"
+p175
+sS'URL'
+p176
+S'<function URL>'
+p177
+sS'__file__'
+p178
+S"'/home/darshan-ubuntu/Project/web2py/applications/PhoneReviews/views/default/features.html'"
+p179
+sS'db'
+p180
+S'<DAL uri="mysql:******@localhost/phone_reviews">'
+p181
+sS'auth'
+p182
+S'<gluon.tools.Auth object>'
+p183
+sS'P'
+S"<class 'gluon.html.P'>"
+p184
+sS'good_month'
+p185
+S"{'1': 0, '10': 0, '11': 0, '12': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, ...}"
+p186
+sS'TFOOT'
+p187
+S"<class 'gluon.html.TFOOT'>"
+p188
+sS'XHTML'
+p189
+S"<class 'gluon.html.XHTML'>"
+p190
+sS'datetime'
+p191
+S"<module 'datetime' from '/usr/lib/python2.7/lib-dynload/datetime.i386-linux-gnu.so'>"
+p192
+sS'ON'
+p193
+S'True'
+p194
+sS'OL'
+p195
+S"<class 'gluon.html.OL'>"
+p196
+sS'TEXTAREA'
+p197
+S"<class 'gluon.html.TEXTAREA'>"
+p198
+sS'MENU'
+p199
+S"<class 'gluon.html.MENU'>"
+p200
+sS'IS_IMAGE'
+p201
+S"<class 'gluon.validators.IS_IMAGE'>"
+p202
+sS'EM'
+p203
+S"<class 'gluon.html.EM'>"
+p204
+sS'CODE'
+p205
+S"<class 'gluon.html.CODE'>"
+p206
+sS'HTTP'
+p207
+S"<class 'gluon.http.HTTP'>"
+p208
+sS'bad_month'
+p209
+S"{'1': 0, '10': 0, '11': 0, '12': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, ...}"
+p210
+sS'HR'
+p211
+S"<class 'gluon.html.HR'>"
+p212
+sS'IS_DATETIME'
+p213
+S"<class 'gluon.validators.IS_DATETIME'>"
+p214
+sS'STYLE'
+p215
+S"<class 'gluon.html.STYLE'>"
+p216
+sS'LABEL'
+p217
+S"<class 'gluon.html.LABEL'>"
+p218
+sS'CLEANUP'
+p219
+S"<class 'gluon.validators.CLEANUP'>"
+p220
+sS'plugins'
+p221
+S'<gluon.tools.PluginManager object>'
+p222
+sS'SELECT'
+p223
+S"<class 'gluon.html.SELECT'>"
+p224
+sS'use_janrain'
+p225
+S'<function use_janrain>'
+p226
+sS'CENTER'
+p227
+S"<class 'gluon.html.CENTER'>"
+p228
+sS'prettydate'
+p229
+S'<function prettydate>'
+p230
+sS'Crud'
+p231
+S"<class 'gluon.tools.Crud'>"
+p232
+sS'Auth'
+p233
+S"<class 'gluon.tools.Auth'>"
+p234
+sS'DEVELOPMENT_MENU'
+p235
+g194
+sS'__builtins__'
+p236
+S"{'ArithmeticError': <type 'exceptions.ArithmeticError'>, 'AssertionError': <type 'exceptions.AssertionError'>, 'AttributeError': <type 'exceptions.AttributeError'>, 'BaseException': <type 'exceptions.BaseException'>, 'BufferError': <type 'exceptions.BufferError'>, 'BytesWarning': <type 'exceptions.BytesWarning'>, 'DeprecationWarning': <type 'exceptions.DeprecationWarning'>, 'EOFError': <type 'exceptions.EOFError'>, 'Ellipsis': Ellipsis, 'EnvironmentError': <type 'exceptions.EnvironmentError'>, ...}"
+p237
+sS'HTML'
+p238
+S"<class 'gluon.html.HTML'>"
+p239
+sS'SQLFORM'
+p240
+S"<class 'gluon.sqlhtml.SQLFORM'>"
+p241
+sS'LOAD'
+p242
+S'<function LOAD>'
+p243
+sS'redirect'
+p244
+S'<function redirect>'
+p245
+sS'FIELDSET'
+p246
+S"<class 'gluon.html.FIELDSET'>"
+p247
+sS'IS_EQUAL_TO'
+p248
+S"<class 'gluon.validators.IS_EQUAL_TO'>"
+p249
+sS'embed64'
+p250
+S'<function embed64>'
+p251
+sS'IS_LIST_OF'
+p252
+S"<class 'gluon.validators.IS_LIST_OF'>"
+p253
+sS'INPUT'
+p254
+S"<class 'gluon.html.INPUT'>"
+p255
+sS'EMBED'
+p256
+S"<class 'gluon.html.EMBED'>"
+p257
+sS'_'
+S'<function _>'
+p258
+sS'H2'
+p259
+S"<class 'gluon.html.H2'>"
+p260
+sS'H3'
+p261
+S"<class 'gluon.html.H3'>"
+p262
+sS'BUTTON'
+p263
+S"<class 'gluon.html.BUTTON'>"
+p264
+sS'H1'
+p265
+S"<class 'gluon.html.H1'>"
+p266
+sS'H6'
+p267
+S"<class 'gluon.html.H6'>"
+p268
+sS'H4'
+p269
+S"<class 'gluon.html.H4'>"
+p270
+sS'H5'
+p271
+S"<class 'gluon.html.H5'>"
+p272
+sS'UL'
+p273
+S"<class 'gluon.html.UL'>"
+p274
+sS'IS_UPPER'
+p275
+S"<class 'gluon.validators.IS_UPPER'>"
+p276
+sS'xmlescape'
+p277
+S'<function xmlescape>'
+p278
+sS'IS_TIME'
+p279
+S"<class 'gluon.validators.IS_TIME'>"
+p280
+sS'OPTION'
+p281
+S"<class 'gluon.html.OPTION'>"
+p282
+sS'TITLE'
+p283
+S"<class 'gluon.html.TITLE'>"
+p284
+sS'CRYPT'
+p285
+S"<class 'gluon.validators.CRYPT'>"
+p286
+sS'IS_EMPTY_OR'
+p287
+S"<class 'gluon.validators.IS_EMPTY_OR'>"
+p288
+sS'MARKMIN'
+p289
+S"<class 'gluon.html.MARKMIN'>"
+p290
+sS'__name__'
+p291
+S"'__restricted__'"
+p292
+sS'message'
+p293
+S"<lazyT 'Hello World!!'>"
+p294
+sS'STRONG'
+p295
+S"<class 'gluon.html.STRONG'>"
+p296
+sS'COL'
+p297
+S"<class 'gluon.html.COL'>"
+p298
+sS'rows'
+p299
+S'<Rows (0)>'
+p300
+sS'service'
+p301
+S'<gluon.tools.Service object>'
+p302
+sS'SCRIPT'
+p303
+S"<class 'gluon.html.SCRIPT'>"
+p304
+sS'TABLE'
+p305
+S"<class 'gluon.html.TABLE'>"
+p306
+sS'IS_IPV4'
+p307
+S"<class 'gluon.validators.IS_IPV4'>"
+p308
+sS'IS_LENGTH'
+p309
+S"<class 'gluon.validators.IS_LENGTH'>"
+p310
+sS'IS_IPV6'
+p311
+S"<class 'gluon.validators.IS_IPV6'>"
+p312
+sS'XML'
+p313
+S"<class 'gluon.html.XML'>"
+p314
+sS'B'
+S"<class 'gluon.html.B'>"
+p315
+sS'IMG'
+p316
+S"<class 'gluon.html.IMG'>"
+p317
+sS'SQLTABLE'
+p318
+S"<class 'gluon.sqlhtml.SQLTABLE'>"
+p319
+sS'IS_MATCH'
+p320
+S"<class 'gluon.validators.IS_MATCH'>"
+p321
+sS'IS_ALPHANUMERIC'
+p322
+S"<class 'gluon.validators.IS_ALPHANUMERIC'>"
+p323
+sS'phone'
+p324
+S"'HTC Nexus One'"
+p325
+sS'SPAN'
+p326
+S"<class 'gluon.html.SPAN'>"
+p327
+sS'IS_JSON'
+p328
+S"<class 'gluon.validators.IS_JSON'>"
+p329
+sS'IS_IPADDRESS'
+p330
+S"<class 'gluon.validators.IS_IPADDRESS'>"
+p331
+sS'IS_SLUG'
+p332
+S"<class 'gluon.validators.IS_SLUG'>"
+p333
+sS'r'
+S"<Row {'id': 2L}>"
+p334
+sS'META'
+p335
+S"<class 'gluon.html.META'>"
+p336
+sS'IS_DATE'
+p337
+S"<class 'gluon.validators.IS_DATE'>"
+p338
+sS'IS_EMAIL'
+p339
+S"<class 'gluon.validators.IS_EMAIL'>"
+p340
+sS'IS_NOT_EMPTY'
+p341
+S"<class 'gluon.validators.IS_NOT_EMPTY'>"
+p342
+sS'IS_FLOAT_IN_RANGE'
+p343
+S"<class 'gluon.validators.IS_FLOAT_IN_RANGE'>"
+p344
+sS'BEAUTIFY'
+p345
+S"<class 'gluon.html.BEAUTIFY'>"
+p346
+sS'TBODY'
+p347
+S"<class 'gluon.html.TBODY'>"
+p348
+sS'CAT'
+p349
+S"<class 'gluon.html.CAT'>"
+p350
+sS'Field'
+p351
+S"<class 'gluon.dal.Field'>"
+p352
+sS'IS_LIST_OF_EMAILS'
+p353
+S"<class 'gluon.validators.IS_LIST_OF_EMAILS'>"
+p354
+sS'LEGEND'
+p355
+S"<class 'gluon.html.LEGEND'>"
+p356
+sS'DIV'
+p357
+S"<class 'gluon.html.DIV'>"
+p358
+sS'id'
+p359
+S'2L'
+p360
+sS'COLGROUP'
+p361
+S"<class 'gluon.html.COLGROUP'>"
+p362
+sS'DAL'
+p363
+S"<class 'gluon.dal.DAL'>"
+p364
+sS'TT'
+p365
+S"<class 'gluon.html.TT'>"
+p366
+sS'TR'
+p367
+S"<class 'gluon.html.TR'>"
+p368
+sS'LI'
+p369
+S"<class 'gluon.html.LI'>"
+p370
+sS'TH'
+p371
+S"<class 'gluon.html.TH'>"
+p372
+sS'TD'
+p373
+S"<class 'gluon.html.TD'>"
+p374
+sS'PluginManager'
+p375
+S"<class 'gluon.tools.PluginManager'>"
+p376
+sS'IS_URL'
+p377
+S"<class 'gluon.validators.IS_URL'>"
+p378
+sS'A'
+S"<class 'gluon.html.A'>"
+p379
+sS'HEAD'
+p380
+S"<class 'gluon.html.HEAD'>"
+p381
+sS'IS_DATETIME_IN_RANGE'
+p382
+S"<class 'gluon.validators.IS_DATETIME_IN_RANGE'>"
+p383
+sS'FORM'
+p384
+S"<class 'gluon.html.FORM'>"
+p385
+sS'I'
+S"<class 'gluon.html.I'>"
+p386
+sS'crud'
+p387
+S'<gluon.tools.Crud object>'
+p388
+sS'IS_NOT_IN_DB'
+p389
+S"<class 'gluon.validators.IS_NOT_IN_DB'>"
+p390
+sg129
+S"<Storage {'body': <cStringIO.StringO object at 0...at 0xabcabed4>, 'view': 'default/features.html'}>"
+p391
+sS'THEAD'
+p392
+S"<class 'gluon.html.THEAD'>"
+p393
+sS'ANY_OF'
+p394
+S"<class 'gluon.validators.ANY_OF'>"
+p395
+sS'IS_NULL_OR'
+p396
+S"<class 'gluon.validators.IS_EMPTY_OR'>"
+p397
+sg56
+S"<Storage {'_vars': <Storage {'phone': 'HTC Nexus...untu/Project/web2py/applications/PhoneReviews/'}>"
+p398
+sS'IS_EXPR'
+p399
+S"<class 'gluon.validators.IS_EXPR'>"
+p400
+sS'T'
+S'<gluon.languages.translator object>'
+p401
+sS'IS_IN_SET'
+p402
+S"<class 'gluon.validators.IS_IN_SET'>"
+p403
+sS'IS_UPLOAD_FILENAME'
+p404
+S"<class 'gluon.validators.IS_UPLOAD_FILENAME'>"
+p405
+sS'time'
+p406
+S"<module 'time' (built-in)>"
+p407
+sS'IS_DECIMAL_IN_RANGE'
+p408
+S"<class 'gluon.validators.IS_DECIMAL_IN_RANGE'>"
+p409
+sssS'traceback'
+p410
+S'Traceback (most recent call last):\n  File "/home/darshan-ubuntu/Project/web2py/gluon/restricted.py", line 220, in restricted\n    exec ccode in environment\n  File "/home/darshan-ubuntu/Project/web2py/applications/PhoneReviews/views/default/features.html", line 37, in <module>\nNameError: name \'var\' is not defined\n'
+p411
+s.

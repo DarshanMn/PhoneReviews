@@ -1,0 +1,385 @@
+(dp1
+S'output'
+p2
+S'missing "pass" in view'
+p3
+sS'layer'
+p4
+S'ParserContainer'
+p5
+sS'code'
+p6
+S'a=request.vars[\'manufacturer\']\nresponse.write(\'\\n\', escape=False)\nb=request.vars[\'phone\']\nresponse.write(\'\\n\', escape=False)\nuser=request.vars[\'user\']\nresponse.write(\'\\n\\n\\n\', escape=False)\nrows = db(db.phone_id.name==b).select(db.phone_id.id)\nresponse.write(\'\\n\', escape=False)\nif len(rows):\n    response.write(\'\\n\', escape=False)\n    for r in rows:\n        response.write(\'\\n\', escape=False)\n        id=r.id\n        response.write(\'\\n\', escape=False)\n        pass\n    response.write(\'\\n\', escape=False)\nelse:\n    response.write(\'\\n\', escape=False)\n    id=0\n    response.write(\'\\n\', escape=False)\n    pass\nresponse.write(\'\\n\\n\', escape=False)\nrows = db(db.phone_images.phone_id==id).select(db.phone_images.images)\nresponse.write(\'\\n\', escape=False)\nif len(rows):\n    response.write(\'\\n\', escape=False)\n    for r in rows:\n        response.write(\'\\n\', escape=False)\n        src=r.images\n        response.write(\'\\n\', escape=False)\n        break\n    response.write(\'\\n\', escape=False)\nelse:\n    response.write(\'\\n\', escape=False)\n    src=""\n    response.write(\'\\n\', escape=False)\n    pass\nresponse.write(\'\\n\\n\', escape=False)\nresponse.write(\'<!DOCTYPE html>\\n<html class="no-js" lang="\', escape=False)\nresponse.write(T.accepted_language or \'en\')\nresponse.write(\'"> \\n<head>\\n<title>\', escape=False)\nresponse.write(response.title or request.application)\nresponse.write(\'</title>\\n  <meta charset="utf-8" />\\n    <meta name="application-name" content="\', escape=False)\nresponse.write(request.application)\nresponse.write(\'" />\\n\\n  <link rel="shortcut icon" href="\', escape=False)\nresponse.write(URL(\'static\',\'images/favicon.ico\'))\nresponse.write(\'" type="image/x-icon">\\n  <link rel="apple-touch-icon" href="\', escape=False)\nresponse.write(URL(\'static\',\'images/favicon.png\'))\nresponse.write(\'">\\n  <link rel="stylesheet" href="\', escape=False)\nresponse.write(URL(\'static\',\'css/footer.css\'))\nresponse.write(\'" type=\\\'text/css\\\'>\\n\\n  <!-- All JavaScript at the bottom, except for Modernizr which enables\\n       HTML5 elements & feature detects -->\\n  <script src="\', escape=False)\nresponse.write(URL(\'static\',\'js/modernizr.custom.js\'))\nresponse.write(\'"></script>\\n\\n  <!-- include stylesheets -->\\n  \', escape=False)\nresponse.files.insert(0,URL(\'static\',\'css/web2py.css\'))\nresponse.files.insert(0,URL(\'static\',\'css/bootstrap.css\'))\nresponse.files.insert(0,URL(\'static\',\'css/offcanvas.css\'))\nresponse.files.insert(0,URL(\'static\',\'css/untitled.css\'))\nresponse.files.insert(1,URL(\'static\',\'css/bootstrap.min.css\'))\nresponse.files.insert(2,URL(\'static\',\'css/bootstrap-responsive.min.css\'))\nresponse.files.insert(3,URL(\'static\',\'css/web2py_bootstrap.css\'))\nresponse.files.insert(3,URL(\'static\',\'css/specifications.css\'))\nresponse.write(\'\\n\\n  \', escape=False)\nresponse.write(\'<script type="text/javascript"><!--\\n    // These variables are used by the web2py_ajax_init function in web2py_ajax.js (which is loaded below).\\n    var w2p_ajax_confirm_message = "\', escape=False)\nresponse.write(T(\'Are you sure you want to delete this object?\'))\nresponse.write(\'";\\n    var w2p_ajax_disable_with_message = "\', escape=False)\nresponse.write(T(\'Working...\'))\nresponse.write(\'";\\n    var w2p_ajax_date_format = "\', escape=False)\nresponse.write(T(\'%Y-%m-%d\'))\nresponse.write(\'";\\n    var w2p_ajax_datetime_format = "\', escape=False)\nresponse.write(T(\'%Y-%m-%d %H:%M:%S\'))\nresponse.write(\'";\\n    var ajax_error_500 = \\\'\', escape=False)\nresponse.write(T.M(\'An error occured, please [[reload %s]] the page\') % URL(args=request.args, vars=request.get_vars))\nresponse.write("\'\\n    //--></script>\\n", escape=False)\nresponse.files.insert(0,URL(\'static\',\'js/jquery.js\'))\nresponse.files.insert(1,URL(\'static\',\'css/calendar.css\'))\nresponse.files.insert(2,URL(\'static\',\'js/calendar.js\'))\nresponse.files.insert(3,URL(\'static\',\'js/web2py.js\'))\nresponse.include_meta()\nresponse.include_files()\nresponse.write(\'\\n\', escape=False)\nresponse.write(\'\\n\\n  <noscript><link href="\', escape=False)\nresponse.write(URL(\'static\', \'css/web2py_bootstrap_nojs.css\'))\nresponse.write(\'" rel="stylesheet" type="text/css" /></noscript>\\n\\n  <style type="text/css">\\n    a.loser{\\n      vertical-align:middle;\\n      color:red;\\n    }\\n  </style>\\n  \', escape=False)\nresponse.write(\'\\n</head>\\n\\n<body>\\n\', escape=False)\nuser=request.vars[\'user\']\nresponse.write(\'\\n  <!-- Navbar ================================================== -->\\n  <div class="navbar navbar-inverse">\\n      <div class="container">\\n        \', escape=False)\nis_mobile=request.user_agent().is_mobile\nresponse.write(\'\\n        <!-- the next tag is necessary for bootstrap menus, do not remove -->\\n        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse" style="\', escape=False)\nresponse.write(\'display:none;\' if not is_mobile else \'\')\nresponse.write(\'">\\n          <span class="icon-bar"></span>\\n          <span class="icon-bar"></span>\\n          <span class="icon-bar"></span>\\n        </button>\\n        <ul id="navbar" class="nav pull-left">\\n          <li>\\n            \', escape=False)\nif user is None:\n    response.write(\'\\n            <a href=\', escape=False)\n    response.write(URL(\'index\'))\n    response.write(\' style="font-size:20px;"><strong>PhoneStats</strong></a>\\n            \', escape=False)\nelse:\n    response.write(\'\\n            <a href=\', escape=False)\n    response.write(URL(\'index\', vars=dict(user=request.vars[\'user\'])))\n    response.write(\' style="font-size:20px;"><strong>PhoneStats</strong></a>\\n            \', escape=False)\n    pass\nresponse.write(\'\\n          </li>\\n        </ul>\\n        <ul id="navbar" class="nav pull-right">\\n          \', escape=False)\nif user is None:\n    response.write(\'\\n          <li>\\n            <a href="index.html">Home</a>\\n          </li>\\n          <li>\\n            <a href="login.html">Login</a>\\n          </li>\\n          <li>\\n            <a href="register.html">Register</a>\\n          </li>\\n          \', escape=False)\nelse:\n    response.write(\'\\n          <li>\\n            <a href=\', escape=False)\n    response.write(URL(\'index\', vars=dict(user=request.vars[\'user\'])))\n    response.write(\'>Home</a>\\n          </li>\\n          <li>\\n            <a href=\', escape=False)\n    response.write(URL(\'profile\', vars=dict(user=request.vars[\'user\'])))\n    response.write(\'>\', escape=False)\n    response.write(request.vars[\'user\'])\n    response.write(\'</a>\\n          </li>\\n          \', escape=False)\n    pass\nresponse.write(\'\\n        </ul>\\n        <div class="\', escape=False)\nresponse.write(\'nav-collapse\' if is_mobile else \'nav\')\nresponse.write(\'">\\n        </div><!--/.nav-collapse -->\\n      </div>\\n  </div><!--/top navbar -->\\n\\n\', escape=False)\nresponse.write(\'\\n\\n  <script type="text/javascript">\\n    function fun()\\n    {\\n      var arra = new Array();\\n      \', escape=False)\nrows = db(db.phone_images.phone_id==id).select(db.phone_images.images)\nresponse.write(\'\\n      \', escape=False)\nif len(rows):\n    response.write(\'\\n      \', escape=False)\n    for r in rows:\n        response.write(\'\\n        var str="\', escape=False)\n        response.write(r.images)\n        response.write(\'";\\n        arra.push(str);\\n      \', escape=False)\n        pass\n    response.write(\'\\n      var id;\\n      var c=document.getElementsByClassName ("change");\\n      for (var i = 0; i < c.length; ++i) {\\n        var item = c[i];  \\n        id = item.id;\\n        item.id=String((Number(id)%(arra.length-1) + 1));\\n        item.src=arra[Number(item.id)];\\n      }\\n      \', escape=False)\n    pass\nresponse.write("\\n    }\\n\\n    document.addEventListener(\'DOMContentLoaded\', function() {\\n    \\t", escape=False)\nrequest_uri = URL(args=request.args, vars=request.vars, host=True)\nresponse.write(\'\\n    \\tvar url = "\', escape=False)\nresponse.write(request_uri)\nresponse.write(\'";\\n    \\tif (url.match("bad_reviews")){\\n    \\t\\tvar c=document.getElementById("sub2");\\n    \\t\\tc.className="item active";    \\t\\t\\t\\n    \\t}\\n    \\telse if(url.match("good_reviews")) {\\n    \\t\\tvar c=document.getElementById("sub1");\\n    \\t\\tc.className="item active";\\n    \\t}\\n    \\telse if(url.match("features")){\\n    \\t\\tvar c=document.getElementById("sub3");\\n    \\t\\tc.className="item active";\\n    \\t}\\n    \\telse{\\n    \\t\\tvar c=document.getElementById("sub0");\\n    \\t\\tc.className="item active";\\n    \\t}\\n   \\t// your code here\\n\\t}, false);\\n  </script>\\n\\n<div class="navigator" style="padding-left:0.5cm;">\\n\\t<p style="color: blue;">\\n\\t\\t\', escape=False)\nif user is None:\n    response.write(\'\\n\\t\\t<a href="\', escape=False)\n    response.write(URL(\'index\'))\n    response.write(\'">Home</a>\\n\\t \\t<a>>></a>\\n\\t\\t<a href="\', escape=False)\n    response.write(URL(\'products\', vars=dict(manufacturer=a)))\n    response.write(\'">\', escape=False)\n    response.write(a)\n    response.write(\'</a>\\n\\t \\t<a>>></a>\\n\\t \\t\', escape=False)\nelse:\n    response.write(\'\\t\\n\\t\\t<a href="\', escape=False)\n    response.write(URL(\'index\', vars=dict(user=request.vars[\'user\'])))\n    response.write(\'">Home</a>\\n\\t \\t<a>>></a>\\n\\t\\t<a href="\', escape=False)\n    response.write(URL(\'products\', vars=dict(manufacturer=a, user=request.vars[\'user\'])))\n    response.write(\'">\', escape=False)\n    response.write(a)\n    response.write(\'</a>\\n\\t \\t<a>>></a>\\n\\t \\t\', escape=False)\n    pass\nresponse.write(\'\\n\\t\\t<a href="#">\', escape=False)\nresponse.write(b.strip(\',\'))\nresponse.write(\'</a>\\n\\t</p>\\n</div>\\n\\n<div class="row">\\n\\t<div class="span6">\\n\\t\\t<br/>\\n\\t\\t<img class="change" id="0" height="10" src="\', escape=False)\nresponse.write(URL(\'static\',\'images/\'+b.replace(" ","_")+\'.jpg\'))\nresponse.write(\'">\\n\\t</div>\\n\\t<div class="span6">\\n\\t\\t<center>\\n\\t\\t<h2 style="vertical-align:middle;">\', escape=False)\nresponse.write(b.strip(\',\'))\nresponse.write(\'</h2>\\n\\t\\t</center>\\n\\t\\t\\n\\t</div>\\n</div>\\n\\n<div class="tabbable">\\n\\t<br/>\\n\\n\\t<ul class="nav nav-tabs-m" >\\n\\t\\t\', escape=False)\nif user is None:\n    response.write(\'\\n\\t\\t<li class="item" id="sub0" onclick=changeToActive(this)>\\n\\t\\t\\t<a id="viTabs_0" style="border-top:1px solid #DDDDDD;" href="\', escape=False)\n    response.write(URL(\'specifications\', vars=dict(manufacturer=a, phone=b)))\n    response.write(\'">Specifications</a>\\n\\t\\t</li>\\n\\t\\t<li class="item" id="sub1" onclick=changeToActive(this)>\\n\\t\\t\\t<a id="viTabs_1" style="border-top:1px solid #DDDDDD;" href="\', escape=False)\n    response.write(URL(\'good_reviews\', vars=dict(manufacturer=a, phone=b)))\n    response.write(\'">Good Reviews</a>\\n\\t\\t</li>\\n\\t\\t<li class="item" id="sub2" onclick=changeToActive(this)>\\n\\t\\t\\t<a id="viTabs_2" style="border-top:1px solid #DDDDDD;" href="\', escape=False)\n    response.write(URL(\'bad_reviews\', vars=dict(manufacturer=a, phone=b)))\n    response.write(\'">Bad Reviews</a>\\n\\t\\t</li>\\n\\t\\t<li class="item" id="sub3" onclick=changeToActive(this)>\\n\\t\\t\\t<a id="viTabs_3" style="border-top:1px solid #DDDDDD;" href="\', escape=False)\n    response.write(URL(\'features\', vars=dict(manufacturer=a, phone=b)))\n    response.write(\'">Features</a>\\n\\t\\t</li>\\n\\t\\t\', escape=False)\nelse:\n    response.write(\'\\n\\t\\t<li class="item" id="sub0" onclick=changeToActive(this)>\\n\\t\\t\\t<a id="viTabs_0" style="border-top:1px solid #DDDDDD;" href="\', escape=False)\n    response.write(URL(\'specifications\', vars=dict(manufacturer=a, user=request.vars[\'user\'], phone=b)))\n    response.write(\'">Specifications</a>\\n\\t\\t</li>\\n\\t\\t<li class="item" id="sub1" onclick=changeToActive(this)>\\n\\t\\t\\t<a id="viTabs_1" style="border-top:1px solid #DDDDDD;" href="\', escape=False)\n    response.write(URL(\'good_reviews\', vars=dict(manufacturer=a, user=request.vars[\'user\'], phone=b)))\n    response.write(\'">Good Reviews</a>\\n\\t\\t</li>\\n\\t\\t<li class="item" id="sub2" onclick=changeToActive(this)>\\n\\t\\t\\t<a id="viTabs_2" style="border-top:1px solid #DDDDDD;" href="\', escape=False)\n    response.write(URL(\'bad_reviews\', vars=dict(manufacturer=a, user=request.vars[\'user\'], phone=b)))\n    response.write(\'">Bad Reviews</a>\\n\\t\\t</li>\\n\\t\\t<li class="item" id="sub3" onclick=changeToActive(this)>\\n\\t\\t\\t<a id="viTabs_3" style="border-top:1px solid #DDDDDD;" href="\', escape=False)\n    response.write(URL(\'features\', vars=dict(manufacturer=a, user=request.vars[\'user\'], phone=b)))\n    response.write(\'">Features</a>\\n\\t\\t</li>\\n\\t\\t\', escape=False)\n    pass\nresponse.write(\'\\n\\t</ul>\\n\\t<br/>\\n\\t<div class="tab-content-m">\\n\\t\', escape=False)\nresponse.write(\'\\n\\n\', escape=False)\nphone= request.vars[\'phone\']\nresponse.write(\'\\n\\n\', escape=False)\nrows = db(db.phone_id.name==phone).select(db.phone_id.id)\nresponse.write(\'\\n\', escape=False)\nfor r in rows:\n    response.write(\'\\n\', escape=False)\n    id=r.id\n    response.write(\'\\n\', escape=False)\n    pass\nresponse.write(\'\\n\\n<textarea id="text" style="margin:5px"></textarea>\\n\\n<div class="button" style="padding-left:5px;"  onclick="getText()">\\n\\t<button > Write a Review </button>\\n</div>\\n\\n<script>\\n\\tvar text, docCount, posCount;\\n\\t\\n\\tfunction getText() {\\n\\t\\ttext = document.getElementById("text").value;\\n\\t\\tgetData();\\n\\t}\\n\\n\\tfunction getData() {\\n\\t\\t\', escape=False)\nsum=db1.doc_frequency.total.sum()\nresponse.write(\';\\n\\t\\tdocCount = \', escape=False)\nresponse.write(db1().select(sum).first()[sum])\nresponse.write(\'\\n\\n\\t\\t\', escape=False)\nrows=db1(db1.docfrequency.words=="positive").select(db1.doc_frequency.total)\nresponse.write(\'\\n\\t\\t\', escape=False)\nfor r in rows:\n    response.write(\'\\n\\t\\tposCount = \', escape=False)\n    response.write(r.total)\n    response.write(\';\\n\\t\\tprint(posCount);\\n\\t}\\n\\n\\tfunction print(var word){\\n\\t\\tdocument.write(word);\\n\\t}\\n</script>\\n\\n\\n\\n\\n\\n<h2 style="padding-left:0.4cm">Good Customer Reviews</h2>\\n\', escape=False)\n    rows = db((db.reviews.types==1)&(db.reviews.phone_id==id)).select()\n    response.write(\'\\n\', escape=False)\n    if len(rows):\n        response.write(\'\\n\\t<ol style="padding-left:0.4cm; padding-top:0.5cm">\\n\\t\', escape=False)\n        for r in rows:\n            response.write(\'\\n\\t\\t\', escape=False)\n            abc = r.review\n            response.write(\'\\n\\t\\t\', escape=False)\n            abc = abc.strip(\' \')\n            response.write(\'\\n\\t\\t<div id="list2" class="row" style="padding-bottom:0.3cm; padding-right:0.5cm"> \\n\\t\\t\\t<li style="padding-left:0.3cm">\\n\\t\\t\\t\\t<p style="color:grey;">By <span style="color:blue;">\', escape=False)\n            response.write(r.user_name)\n            response.write(\'</span> on \', escape=False)\n            response.write(r.dates)\n            response.write(\'</p>\\n\\t\\t\\t\\t<p>\', escape=False)\n            response.write(abc)\n            response.write(\'</p>\\n\\t\\t\\t\\t\', escape=False)\n            rid=r.id\n            response.write(\'\\n\\t\\t\\t</li>\\n\\t\\t</div>\\n\\t\', escape=False)\n            pass\n        response.write(\'\\n\\t</ol>\\n\', escape=False)\n        pass\n    response.write(\'\\n\\n\', escape=False)\n    response.write(\'\\n\\t</div>\\n</div>\\n\\n\', escape=False)\n    response.write(\'\\n\\n  <div id="footer">\\n    <ul>\\n      <li id="loser">\\n        <ul>\\n          <li>\\n            <h4>Navigation: </h4>\\n          </li>\\n          \', escape=False)\n    if user is None:\n        response.write(\'\\n              <li>\\n                <a href=\', escape=False)\n        response.write(URL(\'index\'))\n        response.write(\'>Top Phones</a>\\n              </li>\\n              <li>\\n                <a href=\', escape=False)\n        response.write(URL(\'products\', vars=dict(manufacturer=\'Apple\')))\n        response.write(\'>Apple</a>\\n              </li>\\n              <li>\\n                <a href=\', escape=False)\n        response.write(URL(\'products\', vars=dict(manufacturer=\'BlackBerry\')))\n        response.write(\'>BlackBerry</a>\\n              </li>\\n              <li>\\n                <a href=\', escape=False)\n        response.write(URL(\'products\', vars=dict(manufacturer=\'HTC\')))\n        response.write(\'>HTC</a>\\n              </li>\\n              <li>\\n                <a href=\', escape=False)\n        response.write(URL(\'products\', vars=dict(manufacturer=\'Nokia\')))\n        response.write(\'>Nokia</a>\\n              </li>\\n              <li>\\n                <a href=\', escape=False)\n        response.write(URL(\'products\', vars=dict(manufacturer=\'Samsung\')))\n        response.write(\'>Samsung</a>\\n              </li>\\n              <li>\\n                <a href=\', escape=False)\n        response.write(URL(\'products\', vars=dict(manufacturer=\'Sony\')))\n        response.write(\'>Sony</a>\\n              </li>\\n          \', escape=False)\n    else:\n        response.write(\'\\n              <li>\\n                <a href=\', escape=False)\n        response.write(URL(\'products\', vars=dict(user=request.vars[\'user\'], manufacturer=\'TopPhones\')))\n        response.write(\'>Top Phones</a>\\n              </li>\\n              <li>\\n                <a href=\', escape=False)\n        response.write(URL(\'products\', vars=dict(user=request.vars[\'user\'], manufacturer=\'Apple\')))\n        response.write(\'>Apple</a>\\n              </li>\\n              <li>\\n                <a href=\', escape=False)\n        response.write(URL(\'products\', vars=dict(user=request.vars[\'user\'], manufacturer=\'Blackberry\')))\n        response.write(\'>Blackberry</a>\\n              </li>\\n              <li>\\n                <a href=\', escape=False)\n        response.write(URL(\'products\', vars=dict(user=request.vars[\'user\'], manufacturer=\'HTC\')))\n        response.write(\'>HTC</a>\\n              </li>\\n              <li>\\n                <a href=\', escape=False)\n        response.write(URL(\'products\', vars=dict(user=request.vars[\'user\'], manufacturer=\'Nokia\')))\n        response.write(\'>Nokia</a>\\n              </li>\\n              <li>\\n                <a href=\', escape=False)\n        response.write(URL(\'products\', vars=dict(user=request.vars[\'user\'], manufacturer=\'Samsung\')))\n        response.write(\'>Samsung</a>\\n              </li>\\n              <li>\\n                <a href=\', escape=False)\n        response.write(URL(\'products\', vars=dict(user=request.vars[\'user\'], manufacturer=\'Sony\')))\n        response.write(\'>Sony</a>\\n              </li>\\n          \', escape=False)\n        pass\n    response.write(\'\\n        </ul>\\n      </li>\\n      <li id="loser">\\n        <ul>\\n          <li>\\n            <h4>Follow Us:</h4>\\n          </li>\\n          <li>\\n            <img src=\', escape=False)\n    response.write(URL(\'static\',\'images/facebook.png\'))\n    response.write(\'/>\\n            <a href="">Facebook</a>\\n          </li>\\n          <li>\\n            <img src=\', escape=False)\n    response.write(URL(\'static\',\'images/twitter.png\'))\n    response.write(\'/>\\n            <a href="">Twitter</a>\\n          </li>\\n          <li>\\n            <img src=\', escape=False)\n    response.write(URL(\'static\',\'images/gplus-32.png\'))\n    response.write(\'/>\\n            <a href="">Google Plus</a>\\n          </li>\\n          <li>\\n            <img src=\', escape=False)\n    response.write(URL(\'static\',\'images/gplus-32.png\'))\n    response.write(\'/>\\n            <a href="">Some More</a>\\n          </li>\\n          <li>\\n            <img src=\', escape=False)\n    response.write(URL(\'static\',\'images/gplus-32.png\'))\n    response.write(\'/>\\n            <a href="">Some More</a>\\n          </li>\\n        </ul>\\n      </li>\\n      <li id="loser">\\n        <ul>\\n          <li>\\n            <h4>Other Links: </h4>\\n          </li>          \\n          <li>\\n            <a href="">About Us</a>\\n          </li>\\n          <li>\\n            <a href="">Contact Us</a>\\n          </li>\\n          <li>\\n            <a href="">Terms of Service</a>\\n          </li>\\n          <li>\\n            <a href="">Blog</a>\\n          </li>\\n          <li>\\n            <a href="">Team </a>\\n          </li>\\n          <li>\\n            <a href="">Partners</a>\\n          </li>\\n          <li>\\n            <a href="">Sponsors</a>\\n          </li>\\n        </ul>\\n      </li>\\n    </ul>\\n  </div>\\n\\n  <!-- The javascript =============================================\\n       (Placed at the end of the document so the pages load faster) -->\\n  <script src="\', escape=False)\n    response.write(URL(\'static\',\'js/bootstrap.min.js\'))\n    response.write(\'"></script>\\n  <script src="\', escape=False)\n    response.write(URL(\'static\',\'js/web2py_bootstrap.js\'))\n    response.write(\'"></script>\\n  \\n  \', escape=False)\n    if response.google_analytics_id:\n        response.write(\'\\n  <script src="\', escape=False)\n        response.write(URL(\'static\',\'js/analytics.min.js\'))\n        response.write(\'"></script>\\n  <script type="text/javascript">\\n  analytics.initialize({\\n    \\\'Google Analytics\\\':{trackingId:\\\'\', escape=False)\n        response.write(response.google_analytics_id)\n        response.write("\'} \\n  });</script>\\n  ", escape=False)\n        pass\n    response.write(\'\\n  <script src="\', escape=False)\n    response.write(URL(\'static\',\'js/share.js\',vars=dict(static=URL(\'static\',\'images\'))))\n    response.write(\'"></script>\\n  <script src="\', escape=False)\n    response.write(URL(\'static\',\'js/jsapi.js\'))\n    response.write(\'"></script>\\n\\n  <script type="text/javascript">\\n      google.load("visualization", "1", {packages:["corechart"]});\\n      google.setOnLoadCallback(drawChart);\\n      function drawChart() {\\n        \', escape=False)\n    rows = db(db.phone_id.id==1).select()\n    response.write(\'\\n        \', escape=False)\n    if len(rows):\n        response.write(\'\\n          \', escape=False)\n        for r in rows:\n            response.write("\\n          var data = google.visualization.arrayToDataTable([\\n            [\'Type\', \'No. of Reviews\'],\\n            [\'Good\',     ", escape=False)\n            response.write(r.good)\n            response.write("],\\n            [\'Bad\',      ", escape=False)\n            response.write(r.bad)\n            response.write("],\\n          ]);\\n\\n          var options = {\\n            title: \'Reviews\',\\n            is3D: true,\\n          };\\n\\n          var chart = new google.visualization.PieChart(document.getElementById(\'piechart_3d\'));\\n          chart.draw(data, options);\\n          ", escape=False)\n            pass\n        response.write(\'\\n          \', escape=False)\n        pass\n    response.write(\'\\n      }\\n  </script>\\n</body>\\n</html>\', escape=False)'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__module__'
+p12
+S"'gluon.rocket'"
+p13
+sS'__getslice__'
+p14
+S"<method-wrapper '__getslice__' of SocketTimeout object>"
+p15
+sS'__str__'
+p16
+S"<method-wrapper '__str__' of SocketTimeout object>"
+p17
+sS'__reduce__'
+p18
+S'<built-in method __reduce__ of SocketTimeout object>'
+p19
+sS'__dict__'
+p20
+S'{}'
+p21
+sS'__sizeof__'
+p22
+S'<built-in method __sizeof__ of SocketTimeout object>'
+p23
+sS'__weakref__'
+p24
+S'None'
+p25
+sS'__init__'
+p26
+S"<method-wrapper '__init__' of SocketTimeout object>"
+p27
+sS'__setattr__'
+p28
+S"<method-wrapper '__setattr__' of SocketTimeout object>"
+p29
+sS'__reduce_ex__'
+p30
+S'<built-in method __reduce_ex__ of SocketTimeout object>'
+p31
+sS'__new__'
+p32
+S'<built-in method __new__ of type object>'
+p33
+sS'__format__'
+p34
+S'<built-in method __format__ of SocketTimeout object>'
+p35
+sS'__class__'
+p36
+S"<class 'gluon.rocket.SocketTimeout'>"
+p37
+sS'__doc__'
+p38
+S"'Exception for when a socket times out between requests.'"
+p39
+sS'__getitem__'
+p40
+S"<method-wrapper '__getitem__' of SocketTimeout object>"
+p41
+sS'__setstate__'
+p42
+S'<built-in method __setstate__ of SocketTimeout object>'
+p43
+sS'__getattribute__'
+p44
+S"<method-wrapper '__getattribute__' of SocketTimeout object>"
+p45
+sS'args'
+p46
+S"('Socket timed out before request.',)"
+p47
+sS'__subclasshook__'
+p48
+S'<built-in method __subclasshook__ of type object>'
+p49
+sS'__unicode__'
+p50
+S'<built-in method __unicode__ of SocketTimeout object>'
+p51
+sS'__delattr__'
+p52
+S"<method-wrapper '__delattr__' of SocketTimeout object>"
+p53
+sS'__repr__'
+p54
+S"<method-wrapper '__repr__' of SocketTimeout object>"
+p55
+sS'__hash__'
+p56
+S"<method-wrapper '__hash__' of SocketTimeout object>"
+p57
+ssS'evalue'
+p58
+S'Socket timed out before request.'
+p59
+sS'frames'
+p60
+(lp61
+(dp62
+S'file'
+p63
+S'/home/darshan-ubuntu/Project/web2py/gluon/rocket.py'
+p64
+sS'dump'
+p65
+(dp66
+S'self'
+p67
+S'<WSGIWorker(Thread-10, started daemon -1344283840)>'
+p68
+sS'conn'
+p69
+S'<gluon.rocket.Connection object>'
+p70
+sS'self.run_app'
+p71
+S'<bound method WSGIWorker.run_app of <WSGIWorker(Thread-10, started daemon -1344283840)>>'
+p72
+ssS'lnum'
+p73
+I1337
+sS'lines'
+p74
+(dp75
+I1332
+S'            # Enter connection serve loop'
+p76
+sI1333
+S'            while True:'
+p77
+sI1334
+S'                if __debug__:'
+p78
+sI1335
+S"                    self.err_log.debug('Serving a request')"
+p79
+sI1336
+S'                try:'
+p80
+sI1337
+S'                    self.run_app(conn)'
+p81
+sI1338
+S'                except:'
+p82
+sI1339
+S'                    exc = sys.exc_info()'
+p83
+sI1340
+S'                    handled = self._handleError(*exc)'
+p84
+sI1341
+S'                    if handled:'
+p85
+ssS'call'
+p86
+S'(self=<WSGIWorker(Thread-10, started daemon -1344283840)>)'
+p87
+sS'func'
+p88
+S'run'
+p89
+sa(dp90
+g63
+S'/home/darshan-ubuntu/Project/web2py/gluon/rocket.py'
+p91
+sg65
+(dp92
+S'self'
+p93
+S'<WSGIWorker(Thread-10, started daemon -1344283840)>'
+p94
+sS'self.environ'
+p95
+S"{'HTTP_ACCEPT': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8', 'HTTP_ACCEPT_ENCODING': 'gzip, deflate', 'HTTP_ACCEPT_LANGUAGE': 'en-US,en;q=0.5', 'HTTP_CONNECTION': 'keep-alive', 'HTTP_COOKIE': 'registered=yes; session_id_phonereviews=127.0.0.1-1b3fdbdf-3d14-40cb-b049-2a2e7ce24bc7', 'HTTP_HOST': '127.0.0.1:8000', 'HTTP_USER_AGENT': 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:27.0) Gecko/20100101 Firefox/27.0', 'PATH_INFO': '/PhoneReviews/default/good_reviews', 'QUERY_STRING': 'manufacturer=Nexus&phone=Google+Nexus+5', 'REMOTE_ADDR': '127.0.0.1', ...}"
+p96
+sS'sock_file'
+p97
+S'<socket._fileobject object>'
+p98
+sS'environ'
+p99
+S'undefined'
+p100
+sS'self.build_environ'
+p101
+S'<bound method WSGIWorker.build_environ of <WSGIWorker(Thread-10, started daemon -1344283840)>>'
+p102
+sS'conn'
+p103
+S'<gluon.rocket.Connection object>'
+p104
+ssg73
+I1830
+sg74
+(dp105
+I1825
+S'        else:'
+p106
+sI1826
+S'            sock_file = conn.makefile(BUF_SIZE)'
+p107
+sI1827
+S''
+sI1828
+S'        try:'
+p108
+sI1829
+S'            # Read the headers and build our WSGI environment'
+p109
+sI1830
+S'            self.environ = environ = self.build_environ(sock_file, conn)'
+p110
+sI1831
+S''
+sI1832
+S'            # Handle 100 Continue'
+p111
+sI1833
+S"            if environ.get('HTTP_EXPECT', '') == '100-continue':"
+p112
+sI1834
+S"                res = environ['SERVER_PROTOCOL'] + ' 100 Continue\\r\\n\\r\\n'"
+p113
+ssg86
+S'(self=<WSGIWorker(Thread-10, started daemon -1344283840)>, conn=<gluon.rocket.Connection object>)'
+p114
+sg88
+S'run_app'
+p115
+sa(dp116
+g63
+S'/home/darshan-ubuntu/Project/web2py/gluon/rocket.py'
+p117
+sg65
+(dp118
+S'sock_file'
+p119
+S'<socket._fileobject object>'
+p120
+sS'self.read_request_line'
+p121
+S'<bound method WSGIWorker.read_request_line of <WSGIWorker(Thread-10, started daemon -1344283840)>>'
+p122
+sS'self'
+p123
+S'<WSGIWorker(Thread-10, started daemon -1344283840)>'
+p124
+sS'request'
+p125
+g100
+ssg73
+I1650
+sg74
+(dp126
+I1645
+S'                                      "wsgiorg.futures": executor.futures})'
+p127
+sI1646
+S''
+sI1647
+S'    def build_environ(self, sock_file, conn):'
+p128
+sI1648
+S'        """ Build the execution environment. """'
+p129
+sI1649
+S'        # Grab the request line'
+p130
+sI1650
+S'        request = self.read_request_line(sock_file)'
+p131
+sI1651
+S''
+sI1652
+S'        # Copy the Base Environment'
+p132
+sI1653
+S'        environ = self.base_environ.copy()'
+p133
+sI1654
+S''
+ssg86
+S'(self=<WSGIWorker(Thread-10, started daemon -1344283840)>, sock_file=<socket._fileobject object>, conn=<gluon.rocket.Connection object>)'
+p134
+sg88
+S'build_environ'
+p135
+sa(dp136
+g63
+S'/home/darshan-ubuntu/Project/web2py/gluon/rocket.py'
+p137
+sg65
+(dp138
+S'global SocketTimeout'
+p139
+S"<class 'gluon.rocket.SocketTimeout'>"
+p140
+ssg73
+I1401
+sg74
+(dp141
+I1396
+S''
+sI1397
+S'                d = sock_file.readline()'
+p142
+sI1398
+S'                if PY3K:'
+p143
+sI1399
+S"                    d = d.decode('ISO-8859-1')"
+p144
+sI1400
+S'        except socket.timeout:'
+p145
+sI1401
+S"            raise SocketTimeout('Socket timed out before request.')"
+p146
+sI1402
+S'        except TypeError:'
+p147
+sI1403
+S'            raise SocketClosed('
+p148
+sI1404
+S"                'SSL bug caused closure of socket.  See '"
+p149
+sI1405
+S'                \'"https://groups.google.com/d/topic/web2py/P_Gw0JxWzCs".\')'
+p150
+ssg86
+S'(self=<WSGIWorker(Thread-10, started daemon -1344283840)>, sock_file=<socket._fileobject object>)'
+p151
+sg88
+S'read_request_line'
+p152
+sasS'pyver'
+p153
+S'Python 2.7.5+: /usr/bin/python (prefix: /usr)'
+p154
+sS'etype'
+p155
+S"<class 'gluon.rocket.SocketTimeout'>"
+p156
+sS'date'
+p157
+S'Fri May  9 10:03:34 2014'
+p158
+sS'locals'
+p159
+(dp160
+S'sock_file'
+p161
+S'<socket._fileobject object>'
+p162
+sS'self'
+p163
+S'<WSGIWorker(Thread-10, started daemon -1344283840)>'
+p164
+sssS'traceback'
+p165
+S'Traceback (most recent call last):\n  File "/home/darshan-ubuntu/Project/web2py/gluon/rocket.py", line 1337, in run\n    self.run_app(conn)\n  File "/home/darshan-ubuntu/Project/web2py/gluon/rocket.py", line 1830, in run_app\n    self.environ = environ = self.build_environ(sock_file, conn)\n  File "/home/darshan-ubuntu/Project/web2py/gluon/rocket.py", line 1650, in build_environ\n    request = self.read_request_line(sock_file)\n  File "/home/darshan-ubuntu/Project/web2py/gluon/rocket.py", line 1401, in read_request_line\n    raise SocketTimeout(\'Socket timed out before request.\')\nSocketTimeout: Socket timed out before request.\n'
+p166
+s.
